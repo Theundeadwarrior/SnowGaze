@@ -2,33 +2,5 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="SnowGaze.cpp" />
-    <ClCompile Include="Core\Math\Math.hpp">
-      <Filter>Core\Math</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Core">
-      <UniqueIdentifier>{a095c142-4d40-4cb0-a639-4e2ac02032bf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Vector">
-      <UniqueIdentifier>{e16d57ff-95df-4297-9e76-24ce235df391}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Math">
-      <UniqueIdentifier>{5417eb4e-f39f-4ddf-a65c-ef3c727ff5ca}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Core\Vector\Vector.hpp">
-      <Filter>Core\Vector</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Vector\Vector.h">
-      <Filter>Core\Vector</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Core.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Math\Math.h">
-      <Filter>Core\Math</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
