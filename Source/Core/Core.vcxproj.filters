@@ -14,7 +14,18 @@
     <ClInclude Include="Geometry\Point.h">
       <Filter>Geometry</Filter>
     </ClInclude>
-    <ClInclude Include="Geometry\Normal.h" />
+    <ClInclude Include="Geometry\Geometry.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Geometry.hpp">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Normal.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Ray.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Math">
@@ -35,6 +46,14 @@
     <ClCompile Include="Geometry\Point.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
-    <ClCompile Include="Geometry\Normal.cpp" />
+    <ClCompile Include="Geometry\Geometry.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Normal.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Ray.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClCompile Include="Core\PointTests.cpp" />
     <ClCompile Include="Core\VectorTests.cpp" />
+    <ClCompile Include="GeometryTests.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

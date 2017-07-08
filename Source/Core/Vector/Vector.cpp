@@ -2,6 +2,7 @@
 
 #include "Core/Core.h"
 #include "Core/Vector/Vector.h"
+#include "Core/Geometry/Normal.h"
 
 #include <assert.h>
 #include <math.h>
@@ -14,6 +15,14 @@ namespace Core
 		, y(y)
 		, z(z)
 	{}
+
+	template<typename T>
+	Vector3<T>::Vector3(const Normal& n)
+		: x(n.x)
+		, y(n.y)
+		, z(n.z)
+	{
+	}
 
 	template<typename T>
 	float Vector3<T>::GetSquareLength() const

@@ -1,5 +1,7 @@
 #pragma once
 
+namespace Core { class Normal; }
+
 namespace Core
 {
 	template<typename T>
@@ -8,6 +10,7 @@ namespace Core
 	public:
 		Vector3() = default;
 		Vector3(T x, T y, T z);
+		explicit Vector3(const Normal& n);
 		~Vector3() = default;
 
 		float GetLength() const;

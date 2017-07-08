@@ -166,16 +166,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Core.h" />
+    <ClInclude Include="Geometry\Geometry.h" />
+    <ClInclude Include="Geometry\Geometry.hpp" />
     <ClInclude Include="Geometry\Normal.h" />
     <ClInclude Include="Geometry\Point.h" />
+    <ClInclude Include="Geometry\Ray.h" />
     <ClInclude Include="Math\Math.h" />
     <ClInclude Include="Math\Math.hpp" />
     <ClInclude Include="Vector\Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Geometry\Geometry.cpp" />
     <ClCompile Include="Geometry\Normal.cpp" />
     <ClCompile Include="Geometry\Point.cpp" />
+    <ClCompile Include="Geometry\Ray.cpp" />
     <ClCompile Include="Vector\Vector.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
