@@ -5,15 +5,16 @@
     <ClInclude Include="Vector\Vector.h">
       <Filter>Vector</Filter>
     </ClInclude>
-    <ClInclude Include="Vector\Vector.hpp">
-      <Filter>Vector</Filter>
-    </ClInclude>
     <ClInclude Include="Math\Math.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="Math\Math.hpp">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="Geometry\Point.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Normal.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Math">
@@ -22,8 +23,18 @@
     <Filter Include="Vector">
       <UniqueIdentifier>{28c09b98-9da5-42f2-b9e1-a1055d2c5927}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Geometry">
+      <UniqueIdentifier>{1ebe59e9-c773-412b-849c-345304cde57b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Vector\Vector.cpp">
+      <Filter>Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Point.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Normal.cpp" />
   </ItemGroup>
 </Project>

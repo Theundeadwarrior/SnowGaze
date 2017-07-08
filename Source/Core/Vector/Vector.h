@@ -1,17 +1,14 @@
 #pragma once
-#include <stdint.h>
 
 namespace Core
 {
 	template<typename T>
 	class Vector3
 	{
-		typedef T value_type;
-
 	public:
-		Vector3() {};
+		Vector3() = default;
 		Vector3(T x, T y, T z);
-		~Vector3();
+		~Vector3() = default;
 
 		float GetLength() const;
 		float GetSquareLength() const;
@@ -46,4 +43,4 @@ namespace Core
 	typedef Vector3<double> Vec3d;
 }
 
-#include "Core/Vector/Vector.hpp"
+

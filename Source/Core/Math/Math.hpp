@@ -1,6 +1,10 @@
 #pragma once
 
+#include "Core/Geometry/Point.h"
 #include "Core/Vector/Vector.h"
+
+#include <math.h>
+#include "Math.h"
 
 namespace Core
 {
@@ -39,7 +43,7 @@ namespace Core
 		}
 
 		template<typename T>
-		inline void GetCoordinateSystem(const Vector3<T>& v1, Vector3<T>& v2, Vector3<T>& v3)
+		void GetCoordinateSystem(const Vector3<T>& v1, Vector3<T>& v2, Vector3<T>& v3)
 		{
 			if (Abs(v1.x) > Abs(v1.y))
 			{
@@ -52,6 +56,21 @@ namespace Core
 				v2 = Vector3<T>(0.0f, v1.z * invLen, -v1.y * invLen);
 			}
 			v3 = Cross(v1, v2);
+		}
+	}
+
+	namespace Point
+	{
+		template<typename T>
+		inline float Distance(const Point3<T>& p1, const Point3<T>& p2)
+		{
+			return (p1 - p2).GetLength();
+		}
+
+		template<typename T>
+		inline float SquareDistance(const Point3<T>& p1, const Point3<T>& p2)
+		{
+			return (p1 - p2).GetSquareLength();
 		}
 	}
 }
