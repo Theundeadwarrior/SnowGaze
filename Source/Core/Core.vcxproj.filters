@@ -26,6 +26,9 @@
     <ClInclude Include="Geometry\Ray.h">
       <Filter>Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="Geometry\BoundingBox.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Math">
@@ -53,6 +56,9 @@
       <Filter>Geometry</Filter>
     </ClCompile>
     <ClCompile Include="Geometry\Ray.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\BoundingBox.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
   </ItemGroup>
