@@ -12,6 +12,14 @@ namespace Core
 		BBox(const Point3f& p1, const Point3f& p2);
 		~BBox() = default;
 
+		bool IsOverlapping(const BBox& rhs) const;
+		bool IsInside(const Point3f& p) const;
+
+		void Expand(float f); // expands the box by padding it by f on every sides.
+
+		float GetSurfaceArea() const;
+		float GetVolume() const;
+
 	public:
 		Point3f m_Min;
 		Point3f m_Max;
