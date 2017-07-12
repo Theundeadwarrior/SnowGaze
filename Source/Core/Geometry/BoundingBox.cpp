@@ -1,7 +1,10 @@
 #include "BoundingBox.h"
 
-#include "Core/Vector/Vector.h"
+#include "Core/Geometry/Geometry.h"
+#include "Core/Math/Math.h"
+#include "Core/Math/Vector.h"
 
+#include <assert.h>
 #include <limits>
 
 
@@ -31,13 +34,6 @@ namespace Core
 		return isOverlappingX && isOverlappingY && isOverlappingZ;
 	}
 
-	bool BBox::IsInside(const Point3f & p) const
-	{
-		return(p.x >= m_Min.x && p.x <= m_Max.x &&
-			p.y >= m_Min.y && p.y <= m_Max.y &&
-			p.z >= m_Min.z && p.z <= m_Max.z);
-	}
-
 	void BBox::Expand(float f)
 	{
 		m_Min -= Vec3f(f, f, f);
@@ -55,8 +51,68 @@ namespace Core
 		auto d = m_Max - m_Min;
 		return d.x * d.y * d.z;
 	}
+
+	int BBox::GetMaximumExtend() const
+	{
+		Vec3f d = m_Max - m_Min;
+		if (d.x > d.y && d.x > d.z)
+			return 0;
+		else if (d.y > d.z)
+			return 1;
+		return 2;
+	}
+
+	Point3f BBox::GetLerp(float x, float y, float z) const
+	{
+		return Point3f(Math::GetLerp(x, m_Min.x, m_Max.x), Math::GetLerp(y, m_Min.y, m_Max.y), Math::GetLerp(z, m_Min.z, m_Max.z));
+	}
+
+	Vec3f BBox::GetOffset(const Point3f& p) const
+	{
+		return Vec3f((p.x - m_Min.x) / (m_Max.x - m_Min.x),
+					 (p.y - m_Min.y) / (m_Max.y - m_Min.y),
+					 (p.z - m_Min.z) / (m_Max.z - m_Min.z));
+	}
+
+	void BBox::GetBoundingSphere(Point3f * center, float * radius) const
+	{
+		*center = 0.5f * m_Min + 0.5f * m_Max;
+		*radius = IsInside(*center, *this) ? Geometry::Distance(*center, m_Max) : 0;
+	}
+
+	// todo: refactor to remove this...
+	const Point3f & BBox::operator[](int i) const
+	{
+		assert(i >= 0 && i < 2);
+		if (i == 0)
+			return m_Min;
+		return m_Max;
+	}
+
+	// todo: refactor to remove this...
+	Point3f & BBox::operator[](int i)
+	{
+		assert(i >= 0 && i < 2);
+		if (i == 0)
+			return m_Min;
+		return m_Max;
+	}
 	
-	BBox Geometry::Union(const BBox & b, const Point3f & p)
+	bool IsInside(const Point3f & p, const BBox & bbox)
+	{
+		return(p.x >= bbox.m_Min.x && p.x <= bbox.m_Max.x &&
+			p.y >= bbox.m_Min.y && p.y <= bbox.m_Max.y &&
+			p.z >= bbox.m_Min.z && p.z <= bbox.m_Max.z);
+	}
+
+	bool IsInsideExclusive(const Point3f & p, const BBox & bbox)
+	{
+		return(p.x > bbox.m_Min.x && p.x < bbox.m_Max.x &&
+			p.y > bbox.m_Min.y && p.y < bbox.m_Max.y &&
+			p.z > bbox.m_Min.z && p.z < bbox.m_Max.z);
+	}
+
+	BBox Union(const BBox & b, const Point3f & p)
 	{
 		BBox ret = b;
 		ret.m_Min.x = fmin(b.m_Min.x, p.x);
@@ -68,7 +124,7 @@ namespace Core
 		return ret;
 	}
 
-	BBox Geometry::Union(const BBox& b1, const BBox& b2)
+	BBox Union(const BBox& b1, const BBox& b2)
 	{
 		BBox ret = b1;
 		ret.m_Min.x = fmin(b1.m_Min.x, b2.m_Min.x);

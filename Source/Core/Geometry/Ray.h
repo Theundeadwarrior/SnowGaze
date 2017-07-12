@@ -3,7 +3,7 @@
 #include "Core/Core.h"
 
 #include "Core/Geometry/Point.h"
-#include "Core/Vector/Vector.h"
+#include "Core/Math/Vector.h"
 
 #include <limits>
 

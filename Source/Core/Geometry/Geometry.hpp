@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Vector/Vector.h"
+#include "Core/Math/Vector.h"
 #include "Core/Geometry/Point.h"
 #include "Core/Geometry/Normal.h"
 #include "Geometry.h"

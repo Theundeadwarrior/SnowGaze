@@ -13,7 +13,10 @@
     <ClCompile Include="Core\PointTests.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="GeometryTests.cpp">
+    <ClCompile Include="Core\MatrixTests.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\GeometryTests.cpp">
       <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>

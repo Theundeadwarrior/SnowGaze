@@ -4,9 +4,17 @@
 
 namespace Core
 {
-	template<typename T>
-	T Abs(T value)
+	namespace Math
 	{
-		return value > 0 ? value : -value;
+		template<typename T>
+		inline T Abs(T value)
+		{
+			return value > 0 ? value : -value;
+		}
+
+		float GetLerp(float t, float v1, float v2)
+		{
+			return (1.0f - t) * v1 + t * v2;
+		}
 	}
 }

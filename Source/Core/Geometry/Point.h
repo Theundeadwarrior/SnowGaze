@@ -14,9 +14,15 @@ namespace Core
 
 		template<typename U>
 		Point3<T> operator+(const Vector3<U>& v) const;
+		
+		template<typename U>
+		Point3<T> operator+(const Point3<U>& p) const;
 
 		template<typename U>
 		Point3<T>& operator+=(const Vector3<U>& v);
+
+		template<typename U>
+		Point3<T>& operator+=(const Point3<U>& p);
 
 		template<typename U>
 		Vector3<T> operator-(const Point3<U>& p) const;
@@ -26,14 +32,21 @@ namespace Core
 
 		template<typename U>
 		Point3<T>& operator-=(const Vector3<U>& v);
-		
 
+		Point3<T> operator*(float f) const;
+		Point3<T>& operator*=(float f);
+		
 	public:
 		T x;
 		T y;
 		T z;
 	};
 
+	template <typename T, typename U>
+	inline Point3<T> operator*(U f, const Point3<T>& p);
+
 	typedef Point3<float> Point3f;
 	typedef Point3<double> Point3d;
 }
+
+#include "Core/Geometry/Point.hpp"

@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="Core.h" />
-    <ClInclude Include="Vector\Vector.h">
-      <Filter>Vector</Filter>
-    </ClInclude>
     <ClInclude Include="Math\Math.h">
       <Filter>Math</Filter>
     </ClInclude>
@@ -29,23 +26,32 @@
     <ClInclude Include="Geometry\BoundingBox.h">
       <Filter>Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="Geometry\Point.hpp">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform\Transform.h">
+      <Filter>Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix.h">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Math">
       <UniqueIdentifier>{54ceebb5-f2c5-4139-bd9d-95cd956709da}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Vector">
-      <UniqueIdentifier>{28c09b98-9da5-42f2-b9e1-a1055d2c5927}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Geometry">
       <UniqueIdentifier>{1ebe59e9-c773-412b-849c-345304cde57b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transform">
+      <UniqueIdentifier>{38ce60cf-f1d0-45d9-9c03-db032e7d1446}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
-    <ClCompile Include="Vector\Vector.cpp">
-      <Filter>Vector</Filter>
-    </ClCompile>
     <ClCompile Include="Geometry\Point.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
@@ -60,6 +66,15 @@
     </ClCompile>
     <ClCompile Include="Geometry\BoundingBox.cpp">
       <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform\Transform.cpp">
+      <Filter>Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vector.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Matrix.cpp">
+      <Filter>Math</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

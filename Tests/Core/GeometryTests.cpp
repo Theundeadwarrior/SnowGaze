@@ -1,7 +1,7 @@
 #include "catch.hpp"
 
 #include "Core/Geometry/Geometry.h"
-#include "Core/Vector/Vector.h"
+#include "Core/Math/Vector.h"
 
 using namespace Core;
 
