@@ -51,6 +51,6 @@ namespace Core
 
 	Matrix4x4 GetInverse(const Matrix4x4 & m)
 	{
-		// todo: implement
+		throw("not implemented - Look for Gauss Jordan elemination");
 	}
 }
