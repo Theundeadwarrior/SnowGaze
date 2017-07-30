@@ -34,7 +34,6 @@ namespace Core
 
 		template<typename T>
 		T AbsDot(const Normal& lhs, const Normal& rhs);
-		
 
 		template<typename T>
 		Vector3<T> Cross(const Vector3<T>& lhs, const Vector3<T>& rhs);

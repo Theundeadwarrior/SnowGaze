@@ -87,6 +87,23 @@ namespace Core
 		return *this;
 	}
 
+	template<typename T>
+	Point3<T> Point3<T>::operator/(float f) const
+	{
+		float inv = 1.0f / f;
+		return Point3<T>(x * inv, y * inv, z * inv);
+	}
+
+	template<typename T>
+	Point3<T>& Point3<T>::operator/=(float f)
+	{
+		float inv = 1.0f / f;
+		x *= inv;
+		y *= inv;
+		z *= inv;
+		return *this;
+	}
+
 	template class Point3<float>;
 	template class Point3<double>;
 

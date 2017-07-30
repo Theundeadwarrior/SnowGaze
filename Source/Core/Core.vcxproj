@@ -176,6 +176,7 @@
     <ClInclude Include="Math\Math.h" />
     <ClInclude Include="Math\Math.hpp" />
     <ClInclude Include="Math\Matrix.h" />
+    <ClInclude Include="Math\Quaternion.h" />
     <ClInclude Include="Math\Vector.h" />
     <ClInclude Include="Transform\Transform.h" />
   </ItemGroup>
@@ -187,6 +188,7 @@
     <ClCompile Include="Geometry\Point.cpp" />
     <ClCompile Include="Geometry\Ray.cpp" />
     <ClCompile Include="Math\Matrix.cpp" />
+    <ClCompile Include="Math\Quaternion.cpp" />
     <ClCompile Include="Math\Vector.cpp" />
     <ClCompile Include="Transform\Transform.cpp" />
   </ItemGroup>

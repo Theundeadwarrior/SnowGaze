@@ -38,6 +38,7 @@
     <ClInclude Include="Math\Matrix.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="Math\Quaternion.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Math">
@@ -76,5 +77,6 @@
     <ClCompile Include="Math\Matrix.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="Math\Quaternion.cpp" />
   </ItemGroup>
 </Project>

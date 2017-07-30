@@ -11,4 +11,7 @@ TEST_CASE("Initialize Matrices")
 	REQUIRE(m1.m[3][3] == 1);
 
 	REQUIRE(m1.m[2][0] == 0);
+
+	auto m2 = Core::GetInverse(m1);
+	REQUIRE(m1 == m2);
 }

@@ -19,5 +19,8 @@
     <ClCompile Include="Core\GeometryTests.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Core\TransformTests.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

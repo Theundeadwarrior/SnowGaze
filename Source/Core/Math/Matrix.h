@@ -13,6 +13,9 @@ namespace Core
 			float t30, float t31, float t32, float t33);
 		~Matrix4x4() = default;
 
+		bool operator==(const Matrix4x4& rhs) const;
+		bool operator!=(const Matrix4x4& rhs) const;
+
 	public:
 		float m[4][4];
 	};

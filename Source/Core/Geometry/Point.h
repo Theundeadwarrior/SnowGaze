@@ -35,6 +35,9 @@ namespace Core
 
 		Point3<T> operator*(float f) const;
 		Point3<T>& operator*=(float f);
+
+		Point3<T> operator/(float f) const;
+		Point3<T>& operator/=(float f);
 		
 	public:
 		T x;
