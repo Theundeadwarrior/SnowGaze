@@ -69,6 +69,17 @@ namespace Core
 		return ret;
 	}
 
+	RayDifferential Transform::operator()(const RayDifferential & r) const
+	{
+		RayDifferential ret = r;
+		ret.m_HasDifferential = r.m_HasDifferential;
+		ret.rxOrigin = operator()(r.rxOrigin);
+		ret.ryOrigin = operator()(r.ryOrigin);
+		ret.rxDirection = operator()(r.rxDirection);
+		ret.ryDirection = operator()(r.ryDirection);
+		return ret;
+	}
+
 	BBox Transform::operator()(const BBox & b) const
 	{
 		const Transform &m = *this;
@@ -236,5 +247,233 @@ namespace Core
 		m.m[3][2] = 0.0f;
 
 		return Transform();
+	}
+
+	AnimatedTransform::AnimatedTransform(const std::shared_ptr<Transform> & t1, float time1, const std::shared_ptr<Transform> & t2, float time2)
+		: m_StartTime(time1)
+		, m_EndTime(time2)
+		, m_StartTransform(t1)
+		, m_EndTransform(t2)
+		, m_IsAnimated(t1 != t2)
+	{
+		DecomposeMatrix(m_StartTransform->m, m_Translation[0], m_Rotation[0], m_Scale[0]);
+		DecomposeMatrix(m_EndTransform->m, m_Translation[0], m_Rotation[0], m_Scale[0]);
+
+		m_HasRotation = Dot(m_Rotation[0], m_Rotation[1]) < 0.9995f;
+	}
+
+	void AnimatedTransform::Interpolate(float time, Transform & tranformOut) const
+	{
+		float dt = (time - m_StartTime) / (m_EndTime - m_StartTime);
+
+		// early out if t < start or t > end
+		if (!m_IsAnimated || time <= m_StartTime)
+		{
+			tranformOut = *m_StartTransform;
+			return;
+		}
+		if (time >= m_EndTime)
+		{
+			tranformOut = *m_EndTransform;
+			return;
+		}
+
+		// Interpolate translation
+		Vec3f translation = (1.0f - dt) * m_Translation[0] + dt * m_Translation[1];
+
+		// Interpolate rotation
+		Quaternion rotation = Slerp(dt, m_Rotation[0], m_Rotation[1]);
+		
+		// Interpolate scale
+		Matrix4x4 scale;
+		for (int i = 0; i < 3; ++i)
+		{
+			for (int j = 0; j < 3; ++j)
+			{
+				scale.m[i][j] = Math::GetLerp(dt, m_Scale[0].m[i][j], m_Scale[1].m[i][j]);
+			}
+		}
+
+		tranformOut = GetTranslate(translation) * rotation.ToTransform() * Transform(scale);
+	}
+
+	Ray AnimatedTransform::operator()(const Ray &r) const {
+		if (!m_IsAnimated || r.time <= m_StartTime)
+		{
+			return (*m_StartTransform)(r);
+		}
+		else if (r.time >= m_EndTime)
+		{
+			return (*m_EndTransform)(r);
+		}
+		else 
+		{
+			Transform t;
+			Interpolate(r.time, t);
+			return t(r);
+		}
+	}
+
+	RayDifferential AnimatedTransform::operator()(const RayDifferential& r) const 
+	{
+		if (!m_IsAnimated || r.time <= m_StartTime)
+			return (*m_StartTransform)(r);
+		else if (r.time >= m_EndTime)
+			return (*m_EndTransform)(r);
+		else 
+		{
+			Transform t;
+			Interpolate(r.time, t);
+			return t(r);
+		}
+	}
+
+	Point3f AnimatedTransform::operator()(float time, const Point3<float>& p) const 
+	{
+		if (!m_IsAnimated || time <= m_StartTime)
+		{
+			return (*m_StartTransform)(p);
+		}
+		else if (time >= m_EndTime)
+		{
+			return (*m_EndTransform)(p);
+		}
+		else
+		{
+			Transform t;
+			Interpolate(time, t);
+			return t(p);
+		}
+	}
+
+	Vec3f AnimatedTransform::operator()(float time, const Vector3<float>& v) const 
+	{
+		if (!m_IsAnimated || time <= m_StartTime)
+		{
+			return (*m_StartTransform)(v);
+		}
+		else if (time >= m_EndTime)
+		{
+			return (*m_EndTransform)(v);
+		}
+		else
+		{
+			Transform t;
+			Interpolate(time, t);
+			return t(v);
+		}
+	}
+
+	BBox AnimatedTransform::MotionBounds(const BBox & b, bool useInverse) const
+	{
+		if (!m_IsAnimated)
+		{
+			return (GetInverse(*m_StartTransform))(b);
+		}
+
+		BBox ret;
+		const int nSteps = 128;
+		for (int i = 0; i < nSteps; ++i)
+		{
+			Transform t;
+			float time = Math::GetLerp(float(i) / float(nSteps - 1), m_StartTime, m_EndTime);
+			Interpolate(time, t);
+			if (useInverse)
+			{
+				t = GetInverse(t);
+			}
+			ret = Union(ret, t(b));
+		}
+	}
+
+	//BBox AnimatedTransform::MotionBounds(const BBox & b) const
+	//{
+	//	if (!m_IsAnimated)
+	//	{
+	//		return (*m_StartTransform)(b);
+	//	}
+
+	//	if (m_HasRotation == false)
+	//		return Union((*m_StartTransform)(b), (*m_EndTransform)(b));
+	//	// Return motion bounds accounting for animated rotation
+	//	BBox bounds;
+	//	for (int corner = 0; corner < 8; ++corner)
+	//		bounds = Union(bounds, BoundPointMotion(b.GetCorner(corner)));
+	//	return bounds;
+	//}
+
+	//BBox AnimatedTransform::BoundPointMotion(const Point3f &p) const 
+	//{
+	//	if (!m_IsAnimated)
+	//	{
+	//		return BBox((*m_StartTransform)(p));
+	//	}
+
+	//	BBox bounds((*m_StartTransform)(p), (*m_EndTransform)(p));
+	//	float cosTheta = Dot(m_Rotation[0], m_Rotation[1]);
+	//	float theta = std::acos(Math::Clamp(cosTheta, -1, 1));
+	//	for (int c = 0; c < 3; ++c) 
+	//	{
+	//		// Find any motion derivative zeros for the component _c_
+	//		float zeros[8];
+	//		int nZeros = 0;
+	//		IntervalFindZeros(c1[c].Eval(p), c2[c].Eval(p), c3[c].Eval(p),
+	//			c4[c].Eval(p), c5[c].Eval(p), theta, Interval(0., 1.),
+	//			zeros, &nZeros);
+	//		CHECK_LE(nZeros, sizeof(zeros) / sizeof(zeros[0]));
+
+	//		// Expand bounding box for any motion derivative zeros found
+	//		for (int i = 0; i < nZeros; ++i) {
+	//			Point3f pz = (*this)(Lerp(zeros[i], startTime, endTime), p);
+	//			bounds = Union(bounds, pz);
+	//		}
+	//	}
+	//	return bounds;
+	//}
+
+	void DecomposeMatrix(const Matrix4x4 & m, Vector3<float>& translation, Quaternion& rotation, Matrix4x4& scale)
+	{
+		// Extracts translation
+		translation.x = m.m[0][3];
+		translation.y = m.m[1][3];
+		translation.z = m.m[2][3];
+
+		// Recompute the matrix without the translation
+		Matrix4x4 matrixNoTranslation = m;
+		for (uint32_t i = 0; i < 3; ++i)
+		{
+			matrixNoTranslation.m[i][3] = 0.0f;
+			matrixNoTranslation.m[3][i] = 0.0f;
+		}
+		matrixNoTranslation.m[3][3] = 1.0f;
+
+		// Extract rotation _R_ from transformation matrix
+		float norm;
+		int count = 0;
+		Matrix4x4 rotationMatrix = matrixNoTranslation;
+		do {
+			// Compute next matrix _Rnext_ in series
+			Matrix4x4 rotationNext;
+			Matrix4x4 rotationInversedTransposed = GetInverse(GetTranspose(rotationMatrix));
+			for (int i = 0; i < 4; ++i)
+				for (int j = 0; j < 4; ++j)
+					rotationNext.m[i][j] = 0.5f * (rotationMatrix.m[i][j] + rotationInversedTransposed.m[i][j]);
+
+			// Compute norm of difference between _R_ and _Rnext_
+			norm = 0;
+			for (int i = 0; i < 3; ++i) {
+				float n = Math::Abs(rotationMatrix.m[i][0] - rotationNext.m[i][0]) +
+					Math::Abs(rotationMatrix.m[i][1] - rotationNext.m[i][1]) +
+					Math::Abs(rotationMatrix.m[i][2] - rotationNext.m[i][2]);
+				norm = std::fmax(norm, n);
+			}
+			rotationMatrix = rotationNext;
+		} while (++count < 100 && norm > .0001);
+
+		// XXX TODO FIXME deal with flip...
+		rotation = Quaternion(rotationMatrix);
+
+		// Compute scale _S_ using rotation and original matrix
+		scale = Mul(GetInverse(rotationMatrix), (matrixNoTranslation));
 	}
 }

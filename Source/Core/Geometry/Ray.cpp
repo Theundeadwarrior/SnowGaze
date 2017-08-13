@@ -35,17 +35,17 @@ namespace Core
 	}
 
 	RayDifferential::RayDifferential()
-		: hasDifferential(false)
+		: m_HasDifferential(false)
 	{}
 
 	RayDifferential::RayDifferential(const Point3f & origin, const Vec3f & direction, float start, float end, float time, int depth)
 		: Ray(origin, direction, start, end, time, depth)
-		, hasDifferential(false)
+		, m_HasDifferential(false)
 	{}
 
 	RayDifferential::RayDifferential(const Point3f & origin, const Vec3f & direction, const Ray & parent, float start, float end)
 		: Ray(origin, direction, parent, start, end)
-		, hasDifferential(false)
+		, m_HasDifferential(false)
 	{}
 
 	void RayDifferential::ScaleDifferentials(float s)

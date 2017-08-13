@@ -44,6 +44,6 @@ namespace Core
 		Point3f ryOrigin;
 		Vec3f rxDirection;
 		Vec3f ryDirection;
-		bool hasDifferential;
+		bool m_HasDifferential;
 	};
 }

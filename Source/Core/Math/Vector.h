@@ -42,6 +42,9 @@ namespace Core
 		T z;
 	};
 
+	template<typename T>
+	Vector3<T> operator*(float f, const Vector3<T>& v);
+
 	typedef Vector3<float> Vec3f;
 	typedef Vector3<double> Vec3d;
 }

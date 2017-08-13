@@ -30,8 +30,6 @@ namespace Core
 
 		Transform ToTransform() const;
 
-		Quaternion Slerp(const Quaternion& q1, const Quaternion& q2, float f);
-
 	public:
 		Vec3f v;
 		float w;
@@ -41,5 +39,6 @@ namespace Core
 
 	float Dot(const Quaternion& q1, const Quaternion& q2);
 	Quaternion Normalize(const Quaternion& q);
-	
+	Quaternion Slerp(float f, const Quaternion& q1, const Quaternion& q2);
+		
 }

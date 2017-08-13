@@ -134,22 +134,6 @@ namespace Core
 		return Transform(GetTranspose(m), m);
 	}
 
-	Quaternion Quaternion::Slerp(const Quaternion & q1, const Quaternion & q2, float t)
-	{
-		float cosTheta = Dot(q1, q2);
-		if (cosTheta > 0.9995f)
-		{
-			return Normalize((1.0f - t) * q1 + t * q2);
-		}
-		else
-		{
-			float theta = acosf(Math::Clamp(cosTheta, -1.0f, 1.0f));
-			float thetap = theta * t;
-			Quaternion qperp = Normalize(q2 - q2 * cosTheta);
-			return q1 * cosf(thetap) + qperp * sinf(thetap);
-		}
-	}
-
 	Quaternion operator*(float f, const Quaternion & q)
 	{
 		return q * f;
@@ -163,5 +147,21 @@ namespace Core
 	Quaternion Normalize(const Quaternion & q)
 	{
 		return q / sqrtf(Dot(q, q));
+	}
+
+	Quaternion Slerp(float t, const Quaternion & q1, const Quaternion & q2)
+	{
+		float cosTheta = Dot(q1, q2);
+		if (cosTheta > 0.9995f)
+		{
+			return Normalize((1.0f - t) * q1 + t * q2);
+		}
+		else
+		{
+			float theta = acosf(Math::Clamp(cosTheta, -1.0f, 1.0f));
+			float thetap = theta * t;
+			Quaternion qperp = Normalize(q2 - q2 * cosTheta);
+			return q1 * cosf(thetap) + qperp * sinf(thetap);
+		}
 	}
 }

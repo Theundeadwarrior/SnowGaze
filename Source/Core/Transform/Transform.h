@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Core/Math/Matrix.h"
+#include "Core/Math/Quaternion.h"
+
+#include <memory>
 
 namespace Core { 
 	template<typename T> class Vector3;
@@ -8,6 +11,7 @@ namespace Core {
 	class BBox;
 	class Normal;
 	class Ray;
+	class RayDifferential;
 }
 
 namespace Core
@@ -28,6 +32,7 @@ namespace Core
 		Vector3<float> operator()(const Vector3<float>& v) const;
 		Normal operator()(const Normal& n) const;
 		Ray operator()(const Ray& r) const;
+		RayDifferential operator()(const RayDifferential & r) const;
 		BBox operator()(const BBox& b) const;
 
 		Transform operator*(const Transform& t2) const;
@@ -41,6 +46,7 @@ namespace Core
 		Matrix4x4 m_Inv;
 
 		friend class Quaternion;
+		friend class AnimatedTransform;
 	};
 
 	// Build transformations
@@ -55,7 +61,30 @@ namespace Core
 	class AnimatedTransform 
 	{
 	public:
-		AnimatedTransform(const Transform& t1, float time1, const Transform& t2, float time2);
+		AnimatedTransform(const std::shared_ptr<Transform>& t1, float time1, const std::shared_ptr<Transform>& t2, float time2);
+		
+		void Interpolate(float time, Transform& tranformOut) const;
 
+		Ray operator()(const Ray &r) const;
+		RayDifferential operator()(const RayDifferential& r) const;
+		Point3<float> operator()(float time, const Point3<float>& p) const;
+		Vector3<float> operator()(float time, const Vector3<float>& v) const;
+		
+		BBox MotionBounds(const BBox& b, bool useInverse) const;
+		//BBox MotionBounds(const BBox& b) const;
+		//BBox BoundPointMotion(const Point3<float> &p) const;
+
+	private:
+		Matrix4x4 m_Scale[2];
+		Quaternion m_Rotation[2];
+		Vector3<float> m_Translation[2];
+		const std::shared_ptr<Transform> m_StartTransform;
+		const std::shared_ptr<Transform> m_EndTransform;
+		const float m_StartTime;
+		const float m_EndTime;
+		const bool m_IsAnimated;
+		bool m_HasRotation;
 	};
+
+	void DecomposeMatrix(const Matrix4x4& m, Vector3<float>& translation, Quaternion& rotation, Matrix4x4& scale);
 }

@@ -99,6 +99,7 @@ namespace Core
 		float inv = 1 / div;
 		return Vector3<T>(x * inv, y * inv, z * inv);
 	}
+
 	template<typename T>
 	Vector3<T>& Vector3<T>::operator/=(float div)
 	{
@@ -111,10 +112,20 @@ namespace Core
 		return *this;
 	}
 
+	template<typename T>
+	Vector3<T> operator*(float f, const Vector3<T>& v)
+	{
+		return v * f;
+	}
+
+
 	// todo lcharbonneau: define the rest of the template explicit instantiations
 
 	template class Vector3<float>;
 	template class Vector3<double>;
+
+	template Vec3f operator*(float f, const Vec3f& rhs);
+	template Vec3d operator*(float f, const Vec3d& rhs);
 
 	template Vec3f Vec3f::operator+(const Vec3f& rhs) const;
 	template Vec3d Vec3d::operator+(const Vec3f& rhs) const;
