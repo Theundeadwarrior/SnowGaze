@@ -30,7 +30,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{250DC085-5A0F-496F-8440-2CCF67DE6D9B}</ProjectGuid>
     <RootNamespace>Core</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -169,28 +169,30 @@
     <ClInclude Include="Geometry\BoundingBox.h" />
     <ClInclude Include="Geometry\Geometry.h" />
     <ClInclude Include="Geometry\Geometry.hpp" />
+    <ClInclude Include="Geometry\Math.h" />
+    <ClInclude Include="Geometry\Math.hpp" />
+    <ClInclude Include="Geometry\Matrix.h" />
     <ClInclude Include="Geometry\Normal.h" />
     <ClInclude Include="Geometry\Point.h" />
     <ClInclude Include="Geometry\Point.hpp" />
+    <ClInclude Include="Geometry\Quaternion.h" />
     <ClInclude Include="Geometry\Ray.h" />
-    <ClInclude Include="Math\Math.h" />
-    <ClInclude Include="Math\Math.hpp" />
-    <ClInclude Include="Math\Matrix.h" />
-    <ClInclude Include="Math\Quaternion.h" />
-    <ClInclude Include="Math\Vector.h" />
-    <ClInclude Include="Transform\Transform.h" />
+    <ClInclude Include="Geometry\Transform.h" />
+    <ClInclude Include="Geometry\Vector.h" />
+    <ClInclude Include="Geometry\Vector\vectorf128.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="Geometry\BoundingBox.cpp" />
     <ClCompile Include="Geometry\Geometry.cpp" />
+    <ClCompile Include="Geometry\Matrix.cpp" />
     <ClCompile Include="Geometry\Normal.cpp" />
     <ClCompile Include="Geometry\Point.cpp" />
+    <ClCompile Include="Geometry\Quaternion.cpp" />
     <ClCompile Include="Geometry\Ray.cpp" />
-    <ClCompile Include="Math\Matrix.cpp" />
-    <ClCompile Include="Math\Quaternion.cpp" />
-    <ClCompile Include="Math\Vector.cpp" />
-    <ClCompile Include="Transform\Transform.cpp" />
+    <ClCompile Include="Geometry\Transform.cpp" />
+    <ClCompile Include="Geometry\Vector.cpp" />
+    <ClCompile Include="Geometry\Vector\vectorf128.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

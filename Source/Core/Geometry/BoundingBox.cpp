@@ -1,8 +1,8 @@
 #include "BoundingBox.h"
 
 #include "Core/Geometry/Geometry.h"
-#include "Core/Math/Math.h"
-#include "Core/Math/Vector.h"
+#include "Core/Geometry/Math.h"
+#include "Core/Geometry/Vector.h"
 
 #include <assert.h>
 #include <limits>

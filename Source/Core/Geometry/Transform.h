@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Core/Math/Matrix.h"
-#include "Core/Math/Quaternion.h"
+#include "Core/Geometry/Matrix.h"
+#include "Core/Geometry/Quaternion.h"
 
 #include <memory>
 

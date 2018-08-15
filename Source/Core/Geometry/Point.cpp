@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core/Geometry/Point.h"
-#include "Core/Math/Vector.h"
+#include "Core/Geometry/Vector.h"
 
 namespace Core
 {
@@ -104,6 +104,12 @@ namespace Core
 		return *this;
 	}
 
+	template <typename T, typename U>
+	Point3<T> operator*(U f, const Point3<T>& p)
+	{
+		return p * f;
+	}
+
 	template class Point3<float>;
 	template class Point3<double>;
 
@@ -133,4 +139,6 @@ namespace Core
 	template Point3f& Point3f::operator-=(const Vec3f&);
 	template Point3d& Point3d::operator-=(const Vec3f&);
 	template Point3d& Point3d::operator-=(const Vec3d&);
+
+	template Point3f operator*(float f, const Point3f& p);
 }

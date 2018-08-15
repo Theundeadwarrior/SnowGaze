@@ -1,12 +1,12 @@
 #include "Transform.h"
 
-#include "Core\Geometry\BoundingBox.h"
-#include "Core\Geometry\Geometry.h"
-#include "Core\Geometry\Normal.h"
-#include "Core\Geometry\Point.h"
-#include "Core\Geometry\Ray.h"
-#include "Core\Math\Vector.h"
-#include "Core\Math\Math.h"
+#include "Core/Geometry/BoundingBox.h"
+#include "Core/Geometry/Geometry.h"
+#include "Core/Geometry/Normal.h"
+#include "Core/Geometry/Point.h"
+#include "Core/Geometry/Ray.h"
+#include "Core/Geometry/Vector.h"
+#include "Core/Geometry/Math.h"
 
 #include <math.h>
 
@@ -384,6 +384,7 @@ namespace Core
 			}
 			ret = Union(ret, t(b));
 		}
+		return ret;
 	}
 
 	//BBox AnimatedTransform::MotionBounds(const BBox & b) const

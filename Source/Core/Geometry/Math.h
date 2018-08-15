@@ -18,4 +18,4 @@ namespace Core
 	}
 }
 
-#include "Core/Math/Math.hpp"
+#include "Core/Geometry/Math.hpp"

@@ -1,7 +1,7 @@
 #include "Normal.h"
 
 #include "Core/Core.h"
-#include "Core/Math/Vector.h"
+#include "Core/Geometry/Vector.h"
 
 #include <assert.h>
 #include <math.h>

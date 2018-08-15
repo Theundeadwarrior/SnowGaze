@@ -1,9 +1,9 @@
 #include "Quaternion.h"
 
-#include "Core\Geometry\Geometry.h"
-#include "Core\Transform\Transform.h"
+#include "Core/Geometry/Geometry.h"
+#include "Core/Geometry/Transform.h"
 
-#include "Core\Math\Math.h"
+#include "Core/Geometry/Math.h"
 
 #include <math.h>
 

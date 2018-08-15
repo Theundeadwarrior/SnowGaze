@@ -1,7 +1,9 @@
 #include "catch.hpp"
 
-#include "Core/Math/Math.h"
-#include "Core/Math/Vector.h"
+#include "Core/Geometry/Math.h"
+#include "Core/Geometry/Vector.h"
+
+#include "Core/Geometry/Vector/vectorf128.h"
 
 using namespace Core;
 
@@ -37,4 +39,17 @@ TEST_CASE("Basic Vector Operations")
 	// operator/
 	i /= 2;
 	REQUIRE(i.x == Approx(0.5f));
+}
+
+TEST_CASE("Vector 4f using __m128")
+{
+	Vector4f128 v4f1(0.0f, 1.0f, 2.0f, 0.0f);
+	Vector4f128 v4f2(1.0f, 0.0f, -1.0f, 0.0f);
+
+	auto v4f3 = v4f1 + v4f2;
+	REQUIRE(v4f3[0] == Approx(1.0f));
+	auto length = v4f3.GetLength();
+	auto lengthSquare = v4f3.GetSquareLength();
+	v4f3.Normalize();
+	length = v4f3.GetLength();
 }

@@ -1,7 +1,7 @@
 #include "catch.hpp"
-#include "Core\Geometry\Point.h"
-#include "Core\Geometry\Ray.h"
-#include "Core\Transform\Transform.h"
+#include "Core/Geometry/Point.h"
+#include "Core/Geometry/Ray.h"
+#include "Core/Geometry/Transform.h"
 
 using namespace Core;
 TEST_CASE("Transform on rays uses move.")

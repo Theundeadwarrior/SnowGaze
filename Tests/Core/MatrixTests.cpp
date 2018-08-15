@@ -1,6 +1,6 @@
 #include "catch.hpp"
 
-#include "Core/Math/Matrix.h"
+#include "Core/Geometry/Matrix.h"
 
 TEST_CASE("Initialize Matrices")
 {

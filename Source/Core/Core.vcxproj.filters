@@ -2,15 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="Core.h" />
-    <ClInclude Include="Math\Math.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\Math.hpp">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Geometry\Point.h">
-      <Filter>Geometry</Filter>
-    </ClInclude>
     <ClInclude Include="Geometry\Geometry.h">
       <Filter>Geometry</Filter>
     </ClInclude>
@@ -26,36 +17,47 @@
     <ClInclude Include="Geometry\BoundingBox.h">
       <Filter>Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="Geometry\Vector\vectorf128.h">
+      <Filter>Geometry\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Math.hpp">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Math.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Vector.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Point.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
     <ClInclude Include="Geometry\Point.hpp">
       <Filter>Geometry</Filter>
     </ClInclude>
-    <ClInclude Include="Transform\Transform.h">
-      <Filter>Transform</Filter>
+    <ClInclude Include="Geometry\Matrix.h">
+      <Filter>Geometry</Filter>
     </ClInclude>
-    <ClInclude Include="Math\Vector.h">
-      <Filter>Math</Filter>
+    <ClInclude Include="Geometry\Transform.h">
+      <Filter>Geometry</Filter>
     </ClInclude>
-    <ClInclude Include="Math\Matrix.h">
-      <Filter>Math</Filter>
+    <ClInclude Include="Geometry\Quaternion.h">
+      <Filter>Geometry</Filter>
     </ClInclude>
-    <ClInclude Include="Math\Quaternion.h" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Math">
-      <UniqueIdentifier>{54ceebb5-f2c5-4139-bd9d-95cd956709da}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Geometry">
       <UniqueIdentifier>{1ebe59e9-c773-412b-849c-345304cde57b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Transform">
-      <UniqueIdentifier>{38ce60cf-f1d0-45d9-9c03-db032e7d1446}</UniqueIdentifier>
+    <Filter Include="Geometry\Vector">
+      <UniqueIdentifier>{2aa37d1a-0a8f-45e5-a79d-f75754727ada}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry\Point">
+      <UniqueIdentifier>{168267ba-6d18-4670-be9b-d2d465094bb8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
-    <ClCompile Include="Geometry\Point.cpp">
-      <Filter>Geometry</Filter>
-    </ClCompile>
     <ClCompile Include="Geometry\Geometry.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
@@ -68,15 +70,23 @@
     <ClCompile Include="Geometry\BoundingBox.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
-    <ClCompile Include="Transform\Transform.cpp">
-      <Filter>Transform</Filter>
+    <ClCompile Include="Geometry\Vector\vectorf128.cpp">
+      <Filter>Geometry\Vector</Filter>
     </ClCompile>
-    <ClCompile Include="Math\Vector.cpp">
-      <Filter>Math</Filter>
+    <ClCompile Include="Geometry\Point.cpp">
+      <Filter>Geometry</Filter>
     </ClCompile>
-    <ClCompile Include="Math\Matrix.cpp">
-      <Filter>Math</Filter>
+    <ClCompile Include="Geometry\Vector.cpp">
+      <Filter>Geometry</Filter>
     </ClCompile>
-    <ClCompile Include="Math\Quaternion.cpp" />
+    <ClCompile Include="Geometry\Matrix.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Transform.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Quaternion.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

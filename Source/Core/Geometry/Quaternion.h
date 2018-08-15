@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core\Math\Vector.h"
+#include "Core/Geometry/Vector.h"
 
 namespace Core
 {
