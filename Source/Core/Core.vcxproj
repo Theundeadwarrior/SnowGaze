@@ -175,6 +175,7 @@
     <ClInclude Include="Geometry\Normal.h" />
     <ClInclude Include="Geometry\Point.h" />
     <ClInclude Include="Geometry\Point.hpp" />
+    <ClInclude Include="Geometry\Point\pointf128.h" />
     <ClInclude Include="Geometry\Quaternion.h" />
     <ClInclude Include="Geometry\Ray.h" />
     <ClInclude Include="Geometry\Transform.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="Geometry\Matrix.cpp" />
     <ClCompile Include="Geometry\Normal.cpp" />
     <ClCompile Include="Geometry\Point.cpp" />
+    <ClCompile Include="Geometry\Point\pointf128.cpp" />
     <ClCompile Include="Geometry\Quaternion.cpp" />
     <ClCompile Include="Geometry\Ray.cpp" />
     <ClCompile Include="Geometry\Transform.cpp" />

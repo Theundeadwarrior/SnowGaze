@@ -11,10 +11,12 @@ namespace Core
 		Vector4f128();
 		Vector4f128(float x, float y, float z, float w);
 		Vector4f128(float v);
+		Vector4f128(__m128 value);
 		~Vector4f128();
 
 		float GetLength() const;
 		float GetSquareLength() const;
+		__m128 GetValue() const { return m_Value; }
 
 		void Normalize();
 
@@ -33,7 +35,6 @@ namespace Core
 		float operator[](uint32_t x) const;
 
 	private:
-		Vector4f128(__m128 value);
 		__m128 m_Value;
 	};
 

@@ -44,6 +44,9 @@
     <ClInclude Include="Geometry\Quaternion.h">
       <Filter>Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="Geometry\Point\pointf128.h">
+      <Filter>Geometry\Point</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Geometry">
@@ -87,6 +90,9 @@
     </ClCompile>
     <ClCompile Include="Geometry\Quaternion.cpp">
       <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Point\pointf128.cpp">
+      <Filter>Geometry\Point</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
