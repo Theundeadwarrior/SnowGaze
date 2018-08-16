@@ -98,5 +98,5 @@ namespace Core
 	}
 
 	template Normal::Normal(const Vec3f&);
-	template Normal::Normal(const Vec3d&);
+	//template Normal::Normal(const Vec3d&);
 }

@@ -125,19 +125,19 @@ namespace Core
 	template class Vector3<double>;
 
 	template Vec3f operator*(float f, const Vec3f& rhs);
-	template Vec3d operator*(float f, const Vec3d& rhs);
+//	template Vec3d operator*(float f, const Vec3d& rhs);
 
 	template Vec3f Vec3f::operator+(const Vec3f& rhs) const;
-	template Vec3d Vec3d::operator+(const Vec3f& rhs) const;
-	template Vec3d Vec3d::operator+(const Vec3d& rhs) const;
+	//template Vec3d Vec3d::operator+(const Vec3f& rhs) const;
+	//template Vec3d Vec3d::operator+(const Vec3d& rhs) const;
 	template Vec3f& Vec3f::operator+=(const Vec3f& rhs);
-	template Vec3d& Vec3d::operator+=(const Vec3f& rhs);
-	template Vec3d& Vec3d::operator+=(const Vec3d& rhs);
+	//template Vec3d& Vec3d::operator+=(const Vec3f& rhs);
+	//template Vec3d& Vec3d::operator+=(const Vec3d& rhs);
 
 	template Vec3f Vec3f::operator-(const Vec3f& rhs) const;
-	template Vec3d Vec3d::operator-(const Vec3f& rhs) const;
-	template Vec3d Vec3d::operator-(const Vec3d& rhs) const;
+	//template Vec3d Vec3d::operator-(const Vec3f& rhs) const;
+	//template Vec3d Vec3d::operator-(const Vec3d& rhs) const;
 	template Vec3f& Vec3f::operator-=(const Vec3f& rhs);
-	template Vec3d& Vec3d::operator-=(const Vec3f& rhs);
-	template Vec3d& Vec3d::operator-=(const Vec3d& rhs);
+	//template Vec3d& Vec3d::operator-=(const Vec3f& rhs);
+	//template Vec3d& Vec3d::operator-=(const Vec3d& rhs);
 }

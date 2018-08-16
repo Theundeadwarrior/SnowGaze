@@ -41,6 +41,8 @@ namespace Core
 		bool HasScaling() const;
 		bool HasSwappedHandedness() const;
 
+		const Matrix4x4& GetMatrix() const { return m; }
+
 	private:
 		Matrix4x4 m;
 		Matrix4x4 m_Inv;

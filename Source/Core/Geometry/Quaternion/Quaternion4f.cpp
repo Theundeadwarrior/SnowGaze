@@ -1,4 +1,4 @@
-#include "Quaternion.h"
+#include "Core/Geometry/Quaternion/Quaternion4f.h"
 
 #include "Core/Geometry/Geometry.h"
 #include "Core/Geometry/Transform.h"
@@ -50,10 +50,6 @@ namespace Core
 		}
 	}
 
-
-	Quaternion::~Quaternion()
-	{
-	}
 
 	Quaternion Quaternion::operator+(const Quaternion & rhs) const
 	{

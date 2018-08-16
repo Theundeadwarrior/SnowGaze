@@ -17,7 +17,7 @@ static const double SQRT_2 = 1.41421356237309504880f;
 
 
 
-#define INTEL_INTRINSICS IN_USE
+#define INTEL_INTRINSICS NOT_IN_USE
 //
 //<mmintrin.h>  MMX
 //

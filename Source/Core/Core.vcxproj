@@ -121,6 +121,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ShowIncludes>false</ShowIncludes>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -174,13 +175,16 @@
     <ClInclude Include="Geometry\Matrix.h" />
     <ClInclude Include="Geometry\Normal.h" />
     <ClInclude Include="Geometry\Point.h" />
-    <ClInclude Include="Geometry\Point.hpp" />
-    <ClInclude Include="Geometry\Point\pointf128.h" />
+    <ClInclude Include="Geometry\Point\Point4f.h" />
+    <ClInclude Include="Geometry\Point\Pointf128.h" />
     <ClInclude Include="Geometry\Quaternion.h" />
+    <ClInclude Include="Geometry\Quaternion\Quaternion4f.h" />
+    <ClInclude Include="Geometry\Quaternion\Quaternionf128.h" />
     <ClInclude Include="Geometry\Ray.h" />
     <ClInclude Include="Geometry\Transform.h" />
     <ClInclude Include="Geometry\Vector.h" />
-    <ClInclude Include="Geometry\Vector\vectorf128.h" />
+    <ClInclude Include="Geometry\Vector\Vector4f.h" />
+    <ClInclude Include="Geometry\Vector\Vectorf128.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
@@ -188,13 +192,14 @@
     <ClCompile Include="Geometry\Geometry.cpp" />
     <ClCompile Include="Geometry\Matrix.cpp" />
     <ClCompile Include="Geometry\Normal.cpp" />
-    <ClCompile Include="Geometry\Point.cpp" />
-    <ClCompile Include="Geometry\Point\pointf128.cpp" />
-    <ClCompile Include="Geometry\Quaternion.cpp" />
+    <ClCompile Include="Geometry\Point\Point4f.cpp" />
+    <ClCompile Include="Geometry\Point\Pointf128.cpp" />
+    <ClCompile Include="Geometry\Quaternion\Quaternion4f.cpp" />
+    <ClCompile Include="Geometry\Quaternion\Quaternionf128.cpp" />
     <ClCompile Include="Geometry\Ray.cpp" />
     <ClCompile Include="Geometry\Transform.cpp" />
-    <ClCompile Include="Geometry\Vector.cpp" />
-    <ClCompile Include="Geometry\Vector\vectorf128.cpp" />
+    <ClCompile Include="Geometry\Vector\Vector4f.cpp" />
+    <ClCompile Include="Geometry\Vector\Vectorf128.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

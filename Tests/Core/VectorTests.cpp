@@ -46,6 +46,7 @@ TEST_CASE("Vector 4f using __m128")
 	Vector4f128 v4f1(0.0f, 1.0f, 2.0f, 0.0f);
 	Vector4f128 v4f2(1.0f, 0.0f, -1.0f, 0.0f);
 
+	REQUIRE(v4f2[0] == Approx(1.0f));
 
 
 }
