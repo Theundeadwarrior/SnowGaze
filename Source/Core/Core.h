@@ -1,6 +1,7 @@
 #pragma once
 
 #define USING(x) (4 / (x) - x)
+#define NOT_USING(x) (4 / (x) - 4)
 
 #define IN_USE 1
 #define NOT_IN_USE 2

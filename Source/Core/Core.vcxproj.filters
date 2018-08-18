@@ -29,24 +29,6 @@
     <ClInclude Include="Geometry\Transform.h">
       <Filter>Geometry</Filter>
     </ClInclude>
-    <ClInclude Include="Geometry\Quaternion\Quaternionf128.h">
-      <Filter>Geometry\Quaternion</Filter>
-    </ClInclude>
-    <ClInclude Include="Geometry\Quaternion\Quaternion4f.h">
-      <Filter>Geometry\Quaternion</Filter>
-    </ClInclude>
-    <ClInclude Include="Geometry\Point\Point4f.h">
-      <Filter>Geometry\Point</Filter>
-    </ClInclude>
-    <ClInclude Include="Geometry\Point\Pointf128.h">
-      <Filter>Geometry\Point</Filter>
-    </ClInclude>
-    <ClInclude Include="Geometry\Vector\Vector4f.h">
-      <Filter>Geometry\Vector</Filter>
-    </ClInclude>
-    <ClInclude Include="Geometry\Vector\Vectorf128.h">
-      <Filter>Geometry\Vector</Filter>
-    </ClInclude>
     <ClInclude Include="Geometry\Point.h">
       <Filter>Geometry</Filter>
     </ClInclude>
@@ -60,15 +42,6 @@
   <ItemGroup>
     <Filter Include="Geometry">
       <UniqueIdentifier>{1ebe59e9-c773-412b-849c-345304cde57b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Geometry\Vector">
-      <UniqueIdentifier>{2aa37d1a-0a8f-45e5-a79d-f75754727ada}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Geometry\Point">
-      <UniqueIdentifier>{168267ba-6d18-4670-be9b-d2d465094bb8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Geometry\Quaternion">
-      <UniqueIdentifier>{6344597d-5b7d-4bfa-aac7-1756186443d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -91,23 +64,14 @@
     <ClCompile Include="Geometry\Transform.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
-    <ClCompile Include="Geometry\Quaternion\Quaternionf128.cpp">
-      <Filter>Geometry\Quaternion</Filter>
+    <ClCompile Include="Geometry\Quaternion.cpp">
+      <Filter>Geometry</Filter>
     </ClCompile>
-    <ClCompile Include="Geometry\Quaternion\Quaternion4f.cpp">
-      <Filter>Geometry\Quaternion</Filter>
+    <ClCompile Include="Geometry\Vector.cpp">
+      <Filter>Geometry</Filter>
     </ClCompile>
-    <ClCompile Include="Geometry\Point\Pointf128.cpp">
-      <Filter>Geometry\Point</Filter>
-    </ClCompile>
-    <ClCompile Include="Geometry\Point\Point4f.cpp">
-      <Filter>Geometry\Point</Filter>
-    </ClCompile>
-    <ClCompile Include="Geometry\Vector\Vectorf128.cpp">
-      <Filter>Geometry\Vector</Filter>
-    </ClCompile>
-    <ClCompile Include="Geometry\Vector\Vector4f.cpp">
-      <Filter>Geometry\Vector</Filter>
+    <ClCompile Include="Geometry\Point.cpp">
+      <Filter>Geometry</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

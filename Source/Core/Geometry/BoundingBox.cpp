@@ -22,16 +22,27 @@ namespace Core
 
 	BBox::BBox(const Point3f & p1, const Point3f & p2)
 	{
+#if USING( INTEL_INTRINSICS )
+		m_Min = Point3f(_mm_min_ps(p1.GetValue(), p2.GetValue()));
+		m_Max = Point3f(_mm_max_ps(p1.GetValue(), p2.GetValue()));
+#else // #if USING( INTEL_INTRINSICS )
 		m_Min = Point3f(fmin(p1.x, p2.x), fmin(p1.y, p2.y), fmin(p1.z, p2.z));
 		m_Max = Point3f(fmax(p1.x, p2.x), fmax(p1.y, p2.y), fmax(p1.z, p2.z));
+#endif // #else // #if USING( INTEL_INTRINSICS )
+		
 	}
 
 	bool BBox::IsOverlapping(const BBox & rhs) const
 	{
+#if USING( INTEL_INTRINSICS )
+		__m128 comparison = _mm_and_ps(_mm_cmpge_ps(m_Max.GetValue(), rhs.m_Min.GetValue()), _mm_cmpge_ps(rhs.m_Max.GetValue(), m_Min.GetValue()));
+		return _mm_movemask_ps(comparison) == 0x0F;
+#else // #if USING( INTEL_INTRINSICS )
 		bool isOverlappingX = (m_Max.x >= rhs.m_Min.x) && (rhs.m_Max.x >= m_Min.x);
 		bool isOverlappingY = (m_Max.y >= rhs.m_Min.y) && (rhs.m_Max.y >= m_Min.y);
 		bool isOverlappingZ = (m_Max.z >= rhs.m_Min.z) && (rhs.m_Max.z >= m_Min.z);
 		return isOverlappingX && isOverlappingY && isOverlappingZ;
+#endif // #else // #if USING( INTEL_INTRINSICS )
 	}
 
 	void BBox::Expand(float f)
@@ -42,14 +53,26 @@ namespace Core
 
 	float BBox::GetSurfaceArea() const
 	{
-		auto d = m_Max - m_Min;
+		Vec3f d = m_Max - m_Min;
+#if USING( INTEL_INTRINSICS )
+		float values[4];
+		d.GetInternalValues(values);
+		return 2.0f * (values[0] * values[1] + values[1] * values[2] + values[0] * values[2]);
+#else // #if USING( INTEL_INTRINSICS )
 		return 2.0f * (d.x * d.y + d.y * d.z + d.x * d.z);
+#endif // #else // #if USING( INTEL_INTRINSICS )
 	}
 
 	float BBox::GetVolume() const
 	{
-		auto d = m_Max - m_Min;
+		Vec3f d = m_Max - m_Min;
+#if USING( INTEL_INTRINSICS )
+		float values[4];
+		d.GetInternalValues(values);
+		return values[0] * values[1] * values[2];
+#else // #if USING( INTEL_INTRINSICS )
 		return d.x * d.y * d.z;
+#endif // #else // #if USING( INTEL_INTRINSICS )
 	}
 
 	int BBox::GetMaximumExtend() const

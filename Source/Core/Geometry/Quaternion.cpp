@@ -1,4 +1,4 @@
-#include "Core/Geometry/Quaternion/Quaternion4f.h"
+#include "Core/Geometry/Quaternion.h"
 
 #include "Core/Geometry/Geometry.h"
 #include "Core/Geometry/Transform.h"

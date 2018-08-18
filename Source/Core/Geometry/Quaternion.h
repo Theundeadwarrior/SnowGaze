@@ -1,12 +1,41 @@
 #pragma once
 
-#if USING( INTEL_INTRINSICS )
-#include "Core/Geometry/Quaternion/Quaternionf128.h"
+#include "Core/Geometry/Vector.h"
+
 namespace Core
 {
-	using Quaternion = Quaternion4f128;
-}
+	class Transform;
 
-#else // #if USING( INTEL_INTRINSICS )
-#include "Core/Geometry/Quaternion/Quaternion4f.h"
-#endif // #else // #if USING( INTEL_INTRINSICS )
+	class Quaternion
+	{
+	public:
+		Quaternion();
+		Quaternion(const Transform& t);
+		~Quaternion() = default;
+
+		Quaternion operator+(const Quaternion& rhs) const;
+		Quaternion& operator+=(const Quaternion& rhs);
+
+		Quaternion operator-(const Quaternion& rhs) const;
+		Quaternion& operator-=(const Quaternion& rhs);
+
+		Quaternion operator*(float f) const;
+		Quaternion& operator*=(float f);
+
+		Quaternion operator/(float f) const;
+		Quaternion& operator/=(float f);
+
+		Transform ToTransform() const;
+
+	public:
+		Vec3f v;
+		float w;
+	};
+
+	Quaternion operator*(float f, const Quaternion& q);
+
+	float Dot(const Quaternion& q1, const Quaternion& q2);
+	Quaternion Normalize(const Quaternion& q);
+	Quaternion Slerp(float f, const Quaternion& q1, const Quaternion& q2);
+		
+}

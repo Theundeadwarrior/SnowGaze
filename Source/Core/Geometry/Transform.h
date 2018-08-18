@@ -79,7 +79,7 @@ namespace Core
 	private:
 		Matrix4x4 m_Scale[2];
 		Quaternion m_Rotation[2];
-		Vector3<float> m_Translation[2];
+		Vec3f m_Translation[2];
 		const std::shared_ptr<Transform> m_StartTransform;
 		const std::shared_ptr<Transform> m_EndTransform;
 		const float m_StartTime;

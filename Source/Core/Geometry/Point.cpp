@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Core/Core.h"
+
 #include "Core/Geometry/Point.h"
 #include "Core/Geometry/Vector.h"
 
@@ -113,32 +115,33 @@ namespace Core
 	template class Point3<float>;
 	//template class Point3<double>;
 
-	template Point3f Point3f::operator+(const Vec3f&) const;
-	//template Point3d Point3d::operator+(const Vec3f&) const;
+	template Point3<float> Point3<float>::operator+(const Vector3<float>&) const;
+	//template Point3d Point3d::operator+(const Vector3<float>&) const;
 	//template Point3d Point3d::operator+(const Vec3d&) const;
-	template Point3f Point3f::operator+(const Point3f& p) const;
-	//template Point3d Point3d::operator+(const Point3f& p) const;
+	template Point3<float> Point3<float>::operator+(const Point3<float>& p) const;
+	//template Point3d Point3d::operator+(const Point3<float>& p) const;
 	//template Point3d Point3d::operator+(const Point3d& p) const;
 
-	template Point3f& Point3f::operator+=(const Vec3f&);
-	//template Point3d& Point3d::operator+=(const Vec3f&);
+	template Point3<float>& Point3<float>::operator+=(const Vector3<float>&);
+	//template Point3d& Point3d::operator+=(const Vector3<float>&);
 	//template Point3d& Point3d::operator+=(const Vec3d&);
 
-	template Point3f& Point3f::operator+=(const Point3f& p);
-	//template Point3d& Point3d::operator+=(const Point3f& p);
+	template Point3<float>& Point3<float>::operator+=(const Point3<float>& p);
+	//template Point3d& Point3d::operator+=(const Point3<float>& p);
 	//template Point3d& Point3d::operator+=(const Point3d& p);
 
-	template Vec3f Point3f::operator-(const Point3f&) const;
-	//template Vec3d Point3d::operator-(const Point3f&) const;
+	template Vector3<float> Point3<float>::operator-(const Point3<float>&) const;
+	//template Vec3d Point3d::operator-(const Point3<float>&) const;
 	//template Vec3d Point3d::operator-(const Point3d&) const;
 
-	template Point3f Point3f::operator-(const Vec3f&) const;
-	//template Point3d Point3d::operator-(const Vec3f&) const;
+	template Point3<float> Point3<float>::operator-(const Vector3<float>&) const;
+	//template Point3d Point3d::operator-(const Vector3<float>&) const;
 	//template Point3d Point3d::operator-(const Vec3d&) const;
 
-	template Point3f& Point3f::operator-=(const Vec3f&);
-	//template Point3d& Point3d::operator-=(const Vec3f&);
+	template Point3<float>& Point3<float>::operator-=(const Vector3<float>&);
+	//template Point3d& Point3d::operator-=(const Vector3<float>&);
 	//template Point3d& Point3d::operator-=(const Vec3d&);
 
-	template Point3f operator*(float f, const Point3f& p);
+	template Point3<float> operator*(float f, const Point3<float>& p);
 }
+

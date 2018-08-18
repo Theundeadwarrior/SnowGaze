@@ -118,26 +118,32 @@ namespace Core
 		return v * f;
 	}
 
+	template<typename T>
+	T Dot(const Vector3<T>& v1, const Vector3<T>& v2)
+	{
+		return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+	}
 
 	// todo lcharbonneau: define the rest of the template explicit instantiations
 
 	template class Vector3<float>;
 	template class Vector3<double>;
 
-	template Vec3f operator*(float f, const Vec3f& rhs);
+
+	template Vector3<float> operator*(float f, const Vector3<float>& rhs);
 //	template Vec3d operator*(float f, const Vec3d& rhs);
 
-	template Vec3f Vec3f::operator+(const Vec3f& rhs) const;
-	//template Vec3d Vec3d::operator+(const Vec3f& rhs) const;
+	template Vector3<float> Vector3<float>::operator+(const Vector3<float>& rhs) const;
+	//template Vec3d Vec3d::operator+(const Vector3<float>& rhs) const;
 	//template Vec3d Vec3d::operator+(const Vec3d& rhs) const;
-	template Vec3f& Vec3f::operator+=(const Vec3f& rhs);
-	//template Vec3d& Vec3d::operator+=(const Vec3f& rhs);
+	template Vector3<float>& Vector3<float>::operator+=(const Vector3<float>& rhs);
+	//template Vec3d& Vec3d::operator+=(const Vector3<float>& rhs);
 	//template Vec3d& Vec3d::operator+=(const Vec3d& rhs);
 
-	template Vec3f Vec3f::operator-(const Vec3f& rhs) const;
-	//template Vec3d Vec3d::operator-(const Vec3f& rhs) const;
+	template Vector3<float> Vector3<float>::operator-(const Vector3<float>& rhs) const;
+	//template Vec3d Vec3d::operator-(const Vector3<float>& rhs) const;
 	//template Vec3d Vec3d::operator-(const Vec3d& rhs) const;
-	template Vec3f& Vec3f::operator-=(const Vec3f& rhs);
-	//template Vec3d& Vec3d::operator-=(const Vec3f& rhs);
+	template Vector3<float>& Vector3<float>::operator-=(const Vector3<float>& rhs);
+	//template Vec3d& Vec3d::operator-=(const Vector3<float>& rhs);
 	//template Vec3d& Vec3d::operator-=(const Vec3d& rhs);
 }
