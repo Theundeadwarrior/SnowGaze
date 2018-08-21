@@ -169,10 +169,14 @@
     <ClCompile Include="Core\TransformTests.cpp" />
     <ClCompile Include="Core\VectorTests.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ShapeTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Source\Core\Core.vcxproj">
       <Project>{250dc085-5a0f-496f-8440-2ccf67de6d9b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Source\RenderCore\RenderCore.vcxproj">
+      <Project>{a298246f-5685-48f5-94fb-36fca96b08d5}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

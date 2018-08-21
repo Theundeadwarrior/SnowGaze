@@ -38,10 +38,16 @@
     <ClInclude Include="Geometry\Vector.h">
       <Filter>Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="Memory\ReferenceCounted.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Geometry">
       <UniqueIdentifier>{1ebe59e9-c773-412b-849c-345304cde57b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{89a564d6-3202-40bb-ad00-ba7959296574}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

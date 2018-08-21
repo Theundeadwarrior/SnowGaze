@@ -4,6 +4,9 @@
     <Filter Include="Core">
       <UniqueIdentifier>{1baf8adb-8058-48c4-9f56-eb300c6541d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RendererCore">
+      <UniqueIdentifier>{b86fbea9-5dfb-4ad4-8673-86d9a39ad0b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\VectorTests.cpp">
@@ -21,6 +24,9 @@
     </ClCompile>
     <ClCompile Include="Core\TransformTests.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeTests.cpp">
+      <Filter>RendererCore</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

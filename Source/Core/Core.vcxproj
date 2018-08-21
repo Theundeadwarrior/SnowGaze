@@ -179,6 +179,7 @@
     <ClInclude Include="Geometry\Ray.h" />
     <ClInclude Include="Geometry\Transform.h" />
     <ClInclude Include="Geometry\Vector.h" />
+    <ClInclude Include="Memory\ReferenceCounted.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
