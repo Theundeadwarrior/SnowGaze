@@ -7,7 +7,7 @@
 
 #include <limits>
 
-namespace Core
+namespace SnowGaze
 {
 	class Ray
 	{

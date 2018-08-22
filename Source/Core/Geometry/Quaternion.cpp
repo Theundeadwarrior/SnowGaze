@@ -7,7 +7,7 @@
 
 #include <math.h>
 
-namespace Core
+namespace SnowGaze
 {
 	Quaternion::Quaternion()
 		: v(0.0f, 0.0f, 0.0f)

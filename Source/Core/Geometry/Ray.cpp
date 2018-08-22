@@ -2,7 +2,7 @@
 
 #include <limits>
 
-namespace Core
+namespace SnowGaze
 {
 	Ray::Ray()
 		: mint(0.0f)

@@ -2,7 +2,7 @@
 
 #include "Core/Geometry/Normal.h"
 
-namespace Core
+namespace SnowGaze
 {
 	Normal Geometry::Normalize(const Normal& n)
 	{

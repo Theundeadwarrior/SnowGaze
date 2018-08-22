@@ -5,15 +5,24 @@
     <ClInclude Include="Shapes\Shape.h">
       <Filter>Shapes</Filter>
     </ClInclude>
+    <ClInclude Include="Interaction\Interaction.h">
+      <Filter>Interaction</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Shapes">
       <UniqueIdentifier>{4e32b025-e269-480d-b3d9-fda2ab5692ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Interaction">
+      <UniqueIdentifier>{4cd29367-3fd5-4b6c-a55e-8c3e829a81a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Shapes\Shape.cpp">
       <Filter>Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Interaction\Interaction.cpp">
+      <Filter>Interaction</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

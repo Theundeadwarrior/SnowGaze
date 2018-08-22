@@ -3,7 +3,7 @@
 #include "Core/Geometry/Math.h"
 #include "Core/Geometry/Vector.h"
 
-using namespace Core;
+using namespace SnowGaze;
 
 void RunTests()
 {

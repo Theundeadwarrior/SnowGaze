@@ -2,9 +2,9 @@
 
 #include "Core/Core.h"
 
-namespace Core { class Normal; }
+namespace SnowGaze { class Normal; }
 
-namespace Core
+namespace SnowGaze
 {
 	template<typename T>
 	class Vector3

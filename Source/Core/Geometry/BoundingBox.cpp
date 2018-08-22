@@ -8,7 +8,7 @@
 #include <limits>
 
 
-namespace Core
+namespace SnowGaze
 {
 	BBox::BBox()
 		: m_Min(std::numeric_limits<float>::infinity(), std::numeric_limits<float>::infinity(), std::numeric_limits<float>::infinity())

@@ -2,7 +2,7 @@
 
 #include <atomic>
 
-namespace Core
+namespace SnowGaze
 {
 
 	class ReferenceCounted

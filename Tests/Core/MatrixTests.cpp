@@ -4,7 +4,7 @@
 
 TEST_CASE("Initialize Matrices")
 {
-	Core::Matrix4x4 m1;
+	SnowGaze::Matrix4x4 m1;
 	REQUIRE(m1.m[0][0] == 1);
 	REQUIRE(m1.m[1][1] == 1);
 	REQUIRE(m1.m[2][2] == 1);
@@ -12,6 +12,6 @@ TEST_CASE("Initialize Matrices")
 
 	REQUIRE(m1.m[2][0] == 0);
 
-	auto m2 = Core::GetInverse(m1);
+	auto m2 = SnowGaze::GetInverse(m1);
 	REQUIRE(m1 == m2);
 }

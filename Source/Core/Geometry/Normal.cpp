@@ -7,13 +7,20 @@
 #include <math.h>
 
 
-namespace Core
+namespace SnowGaze
 {
 	template<typename T>
 	inline Normal::Normal(const Vector3<T>& v)
 		: x(static_cast<float>(v.x))
 		, y(static_cast<float>(v.y))
 		, z(static_cast<float>(v.z))
+	{
+	}
+
+	Normal::Normal()
+		: x(1)
+		, y(1)
+		, z(1)
 	{
 	}
 

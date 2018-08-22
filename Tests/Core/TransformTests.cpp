@@ -3,7 +3,7 @@
 #include "Core/Geometry/Ray.h"
 #include "Core/Geometry/Transform.h"
 
-using namespace Core;
+using namespace SnowGaze;
 TEST_CASE("Transform on rays uses move.")
 {
 	Point3f origin(0.0f, 0.0f, 0.0f);

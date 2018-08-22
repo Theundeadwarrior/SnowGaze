@@ -27,16 +27,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Interaction\Interaction.h" />
     <ClInclude Include="RenderCore.h" />
     <ClInclude Include="Shapes\Shape.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Interaction\Interaction.cpp" />
+    <ClCompile Include="Shapes\Shape.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">
       <Project>{250dc085-5a0f-496f-8440-2ccf67de6d9b}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Shapes\Shape.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

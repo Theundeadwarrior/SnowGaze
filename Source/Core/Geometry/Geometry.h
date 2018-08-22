@@ -1,12 +1,12 @@
 #pragma once
 
-namespace Core {
+namespace SnowGaze {
 	template<typename T> class Vector3;
 	template<typename T> class Point3;
 	class Normal;
 }
 
-namespace Core
+namespace SnowGaze
 {
 	namespace Geometry
 	{

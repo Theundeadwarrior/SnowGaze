@@ -3,7 +3,7 @@
 #include "Core/Geometry/Geometry.h"
 #include "Core/Geometry/Vector.h"
 
-using namespace Core;
+using namespace SnowGaze;
 
 TEST_CASE("Dot Product")
 {

@@ -10,7 +10,7 @@
 
 #include <math.h>
 
-namespace Core
+namespace SnowGaze
 {
 	Transform::Transform(float mat[4][4])
 		: m(mat)

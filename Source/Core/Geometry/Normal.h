@@ -1,15 +1,15 @@
 #pragma once
 
-namespace Core { template<typename T> class Vector3; }
+namespace SnowGaze { template<typename T> class Vector3; }
 
-namespace Core
+namespace SnowGaze
 {
 	class Normal
 	{
 	public:
+		Normal();
 		template<typename T>
 		explicit Normal(const Vector3<T>& v);
-
 		Normal(float x, float y, float z);
 		Normal(const Normal&) = default;
 		~Normal() = default;

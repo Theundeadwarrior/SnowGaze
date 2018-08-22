@@ -5,7 +5,7 @@
 #include "Core/Geometry/Point.h"
 #include "Core/Geometry/Vector.h"
 
-namespace Core
+namespace SnowGaze
 {
 	template<typename T>
 	Point3<T>::Point3(T x, T y, T z)

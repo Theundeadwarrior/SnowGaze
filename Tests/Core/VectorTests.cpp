@@ -5,7 +5,7 @@
 
 #include "Core/Geometry/Vector.h"
 
-using namespace Core;
+using namespace SnowGaze;
 
 #define VECTOR_APPROX_EQUALS(x, y) x.x == Approx(y.x) && x.y == Approx(y.y) && x.z == Approx(y.z)
 

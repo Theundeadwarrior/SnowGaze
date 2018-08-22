@@ -5,7 +5,7 @@
 
 #include <memory>
 
-namespace Core { 
+namespace SnowGaze { 
 	template<typename T> class Vector3;
 	template<typename T> class Point3;
 	class BBox;
@@ -14,7 +14,7 @@ namespace Core {
 	class RayDifferential;
 }
 
-namespace Core
+namespace SnowGaze
 {
 	class Transform
 	{

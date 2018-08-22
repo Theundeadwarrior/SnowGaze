@@ -5,7 +5,7 @@
 #include "Core/Geometry/Normal.h"
 #include "Geometry.h"
 
-namespace Core
+namespace SnowGaze
 {
 	namespace Geometry
 	{

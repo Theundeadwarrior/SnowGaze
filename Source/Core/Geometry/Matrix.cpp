@@ -6,7 +6,7 @@
 #include <assert.h>
 #include <algorithm>
 
-namespace Core
+namespace SnowGaze
 {
 	Matrix4x4::Matrix4x4()
 	{

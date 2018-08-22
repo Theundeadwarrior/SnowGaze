@@ -7,7 +7,7 @@
 #include <assert.h>
 #include <math.h>
 
-namespace Core
+namespace SnowGaze
 {
 	template<typename T>
 	Vector3<T>::Vector3(T x, T y, T z)

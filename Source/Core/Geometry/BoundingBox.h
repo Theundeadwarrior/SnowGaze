@@ -2,9 +2,9 @@
 
 #include "Core/Geometry/Point.h"
 
-namespace Core { template<typename T> class Vector3; }
+namespace SnowGaze { template<typename T> class Vector3; }
 
-namespace Core
+namespace SnowGaze
 {
 	class BBox
 	{

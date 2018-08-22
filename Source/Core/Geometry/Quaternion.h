@@ -2,7 +2,7 @@
 
 #include "Core/Geometry/Vector.h"
 
-namespace Core
+namespace SnowGaze
 {
 	class Transform;
 

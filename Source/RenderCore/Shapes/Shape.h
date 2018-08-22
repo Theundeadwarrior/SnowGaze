@@ -1,25 +1,51 @@
 #pragma once
-#include "Core/Geometry/Transform.h"
 
-using namespace Core;
+#include <stdint.h>
 
-namespace RenderCore
+
+namespace SnowGaze
 {
+	class Transform;
+	class BBox;
+	class SurfaceInteraction;
+	class Ray;
+	class Interaction;
+	template<typename T> class Point2;
+	template<typename T> class Point3;
+	template<typename T> class Vector3;
+
 	class Shape
 	{
 	public:
-		Shape(const Transform* objectToWorld, const Transform* worldToObject, bool reverseOrientation)
-		: m_ObjectToWorld(objectToWorld)
-		, m_WorldToObject(worldToObject)
-		, m_IsReverseOrientation(reverseOrientation)
-		, m_TransformSwapsHandedness(objectToWorld->HasSwappedHandedness())
+		Shape(const Transform* objectToWorld, const Transform* worldToObject, bool reverseOrientation);
+
+		virtual BBox GetObjectBound() const = 0;
+		virtual BBox GetWorldBound() const;
+
+		virtual bool Intersect(const Ray& ray, float* hit, SurfaceInteraction* isect, bool testAlphaTexture = true) const = 0;
+		virtual bool IntersectP(const Ray& ray, bool testAlphaTexture = true) const
 		{
+			return Intersect(ray, nullptr, nullptr, testAlphaTexture);
 		}
+
+		virtual float GetArea() const = 0;
+		
+		virtual Interaction Sample(const Point2<float>& u, float* pdf) const = 0;
+		virtual float PDF(const Interaction&) const { return 1 / GetArea(); }
+
+		virtual Interaction Sample(const Interaction& ref, const Point2<float>& u, float* pdf) const;
+		virtual float PDF(const Interaction& ref, const Vector3<float>& wi) const;
+
+		virtual float GetSolidAngle(const Point3<float>& p, int nbSample = 512) const;
+
+
+		static uint32_t s_ShapeCount;
 
 	private:
 		const Transform* m_ObjectToWorld;
 		const Transform* m_WorldToObject;
 		const bool m_IsReverseOrientation;
 		const bool m_TransformSwapsHandedness;
+		const uint32_t m_ShapeId;
 	};
 }

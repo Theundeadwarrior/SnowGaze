@@ -5,7 +5,7 @@
 
 #include <math.h>
 
-using namespace Core;
+using namespace SnowGaze;
 
 TEST_CASE("Point Distance Operations")
 {

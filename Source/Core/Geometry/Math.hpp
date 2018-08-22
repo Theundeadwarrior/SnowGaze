@@ -3,7 +3,7 @@
 #include "Core\Core.h"
 #include "Math.h"
 
-namespace Core
+namespace SnowGaze
 {
 	namespace Math
 	{
