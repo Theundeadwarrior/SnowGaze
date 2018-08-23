@@ -41,6 +41,12 @@
     <ClInclude Include="Memory\ReferenceCounted.h">
       <Filter>Memory</Filter>
     </ClInclude>
+    <ClInclude Include="Geometry\Vector.hpp">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Point.hpp">
+      <Filter>Geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Geometry">
@@ -71,12 +77,6 @@
       <Filter>Geometry</Filter>
     </ClCompile>
     <ClCompile Include="Geometry\Quaternion.cpp">
-      <Filter>Geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="Geometry\Vector.cpp">
-      <Filter>Geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="Geometry\Point.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
   </ItemGroup>

@@ -8,6 +8,9 @@
     <ClInclude Include="Interaction\Interaction.h">
       <Filter>Interaction</Filter>
     </ClInclude>
+    <ClInclude Include="Shapes\Sphere.h">
+      <Filter>Shapes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Shapes">
@@ -23,6 +26,9 @@
     </ClCompile>
     <ClCompile Include="Interaction\Interaction.cpp">
       <Filter>Interaction</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes\Sphere.cpp">
+      <Filter>Shapes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

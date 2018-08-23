@@ -7,6 +7,43 @@ namespace SnowGaze { class Normal; }
 namespace SnowGaze
 {
 	template<typename T>
+	class Vector2
+	{
+	public:
+		Vector2() = default;
+		Vector2(T x, T y);
+		~Vector2() = default;
+
+		float GetLength() const;
+		float GetSquareLength() const;
+
+		void Normalize();
+		
+		Vector2<T> operator+(const Vector2<T>& rhs) const;
+		Vector2<T>& operator+=(const Vector2<T>& rhs);
+
+		Vector2<T> operator-(const Vector2<T>& rhs) const;
+		Vector2<T>& operator-=(const Vector2<T>& rhs);
+
+		template<typename U>
+		Vector2<T> operator*(U mult) const;
+
+		template<typename U>
+		Vector2<T>& operator*=(U mult);
+
+		template<typename U>
+		Vector2<T> operator/(U div) const;
+
+		template<typename U>
+		Vector2<T>& operator/=(U div);
+
+	public:
+		T x;
+		T y;
+	};
+
+
+	template<typename T>
 	class Vector3
 	{
 	public:
@@ -20,23 +57,25 @@ namespace SnowGaze
 
 		void Normalize();
 
-		template <typename U>
-		Vector3<T> operator+(const Vector3<U>& rhs) const;
+		Vector3<T> operator+(const Vector3<T>& rhs) const;
 	
-		template <typename U>
-		Vector3<T>& operator+=(const Vector3<U>& rhs);
+		Vector3<T>& operator+=(const Vector3<T>& rhs);
 
-		template <typename U>
-		Vector3<T> operator-(const Vector3<U>& rhs) const;
+		Vector3<T> operator-(const Vector3<T>& rhs) const;
 
-		template <typename U>
-		Vector3<T>& operator-=(const Vector3<U>& rhs);
+		Vector3<T>& operator-=(const Vector3<T>& rhs);
 
-		Vector3<T> operator*(float mult) const;
-		Vector3<T>& operator*=(float mult);
+		template<typename U>
+		Vector3<T> operator*(U mult) const;
 
-		Vector3<T> operator/(float div) const;
-		Vector3<T>& operator/=(float div);
+		template<typename U>
+		Vector3<T>& operator*=(U mult);
+
+		template<typename U>
+		Vector3<T> operator/(U div) const;
+
+		template<typename U>
+		Vector3<T>& operator/=(U div);
 
 	public:
 		T x;
@@ -48,9 +87,18 @@ namespace SnowGaze
 	Vector3<T> operator*(float f, const Vector3<T>& v);
 
 	template<typename T>
+	Vector2<T> operator*(float f, const Vector2<T>& v);
+
+	template<typename T>
 	T Dot(const Vector3<T>& lhs, const Vector3<T>& rhs);
 
+	template<typename T>
+	T Dot(const Vector2<T>& lhs, const Vector2<T>& rhs);
+
+	using Vec2f = Vector2<float>;
+	using Vec2d = Vector2<double>;
 	using Vec3f = Vector3<float>;
+	using Vec3d = Vector3<double>;
 }
 
-
+#include "Core/Geometry/Vector.hpp"

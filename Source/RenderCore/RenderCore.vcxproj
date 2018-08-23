@@ -30,10 +30,12 @@
     <ClInclude Include="Interaction\Interaction.h" />
     <ClInclude Include="RenderCore.h" />
     <ClInclude Include="Shapes\Shape.h" />
+    <ClInclude Include="Shapes\Sphere.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Interaction\Interaction.cpp" />
     <ClCompile Include="Shapes\Shape.cpp" />
+    <ClCompile Include="Shapes\Sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">
