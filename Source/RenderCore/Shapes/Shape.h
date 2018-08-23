@@ -6,21 +6,21 @@
 namespace SnowGaze
 {
 	class Transform;
-	class BBox;
 	class SurfaceInteraction;
 	class Ray;
 	class Interaction;
 	template<typename T> class Point2;
 	template<typename T> class Point3;
 	template<typename T> class Vector3;
+	template<typename T> class Bounds3;
 
 	class Shape
 	{
 	public:
 		Shape(const Transform* objectToWorld, const Transform* worldToObject, bool reverseOrientation);
 
-		virtual BBox GetObjectBound() const = 0;
-		virtual BBox GetWorldBound() const;
+		virtual Bounds3<float> GetObjectBound() const = 0;
+		virtual Bounds3<float> GetWorldBound() const;
 
 		virtual bool Intersect(const Ray& ray, float* hit, SurfaceInteraction* isect, bool testAlphaTexture = true) const = 0;
 		virtual bool IntersectP(const Ray& ray, bool testAlphaTexture = true) const

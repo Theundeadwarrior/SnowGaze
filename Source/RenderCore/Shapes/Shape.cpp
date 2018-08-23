@@ -16,7 +16,7 @@ namespace SnowGaze
 	{
 	}
 
-	BBox Shape::GetWorldBound() const
+	Bounds3f Shape::GetWorldBound() const
 	{
 		return (*m_ObjectToWorld)(GetObjectBound());
 	}

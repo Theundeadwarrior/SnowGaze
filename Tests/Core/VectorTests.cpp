@@ -11,16 +11,16 @@ using namespace SnowGaze;
 
 TEST_CASE("Basic Vector Operations")
 {
-	Vec3f i(1.0f, 0.0f, 0.0f);
-	Vec3f j(0.0f, 1.0f, 0.0f);
-	Vec3f k(0.0f, 0.0f, 0.0f);
+	Vector3f i(1.0f, 0.0f, 0.0f);
+	Vector3f j(0.0f, 1.0f, 0.0f);
+	Vector3f k(0.0f, 0.0f, 0.0f);
 
 	// operator+
-	Vec3f ij = i + j;
+	Vector3f ij = i + j;
 	REQUIRE(ij.x == Approx(i.x));
 	REQUIRE(ij.y == Approx(j.y));
 
-	Vec3f ijk = ij;
+	Vector3f ijk = ij;
 	ijk += k;
 	REQUIRE(ijk.z == Approx(k.z));
 

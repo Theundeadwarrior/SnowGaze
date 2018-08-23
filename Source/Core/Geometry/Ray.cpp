@@ -11,7 +11,7 @@ namespace SnowGaze
 		, depth(0)
 	{}
 
-	Ray::Ray(const Point3f & origin, const Vec3f & direction, float start, float end, float t, int d)
+	Ray::Ray(const Point3f & origin, const Vector3f & direction, float start, float end, float t, int d)
 		: o(origin)
 		, d(direction)
 		, mint(start)
@@ -20,7 +20,7 @@ namespace SnowGaze
 		, depth(d)
 	{}
 
-	Ray::Ray(const Point3f & origin, const Vec3f & direction, const Ray & parent, float start, float end)
+	Ray::Ray(const Point3f & origin, const Vector3f & direction, const Ray & parent, float start, float end)
 		: o(origin)
 		, d(direction)
 		, mint(start)
@@ -38,12 +38,12 @@ namespace SnowGaze
 		: m_HasDifferential(false)
 	{}
 
-	RayDifferential::RayDifferential(const Point3f & origin, const Vec3f & direction, float start, float end, float time, int depth)
+	RayDifferential::RayDifferential(const Point3f & origin, const Vector3f & direction, float start, float end, float time, int depth)
 		: Ray(origin, direction, start, end, time, depth)
 		, m_HasDifferential(false)
 	{}
 
-	RayDifferential::RayDifferential(const Point3f & origin, const Vec3f & direction, const Ray & parent, float start, float end)
+	RayDifferential::RayDifferential(const Point3f & origin, const Vector3f & direction, const Ray & parent, float start, float end)
 		: Ray(origin, direction, parent, start, end)
 		, m_HasDifferential(false)
 	{}

@@ -28,38 +28,7 @@ namespace SnowGaze
 		, m_Inv(mat_inverse)
 	{}
 
-	Point3<float> Transform::operator()(const Point3<float>& p) const
-	{
-		float x = p.x, y = p.y, z = p.z;
-		float xp = m.m[0][0] * x + m.m[0][1] * y + m.m[0][2] * z + m.m[0][3];
-		float yp = m.m[1][0] * x + m.m[1][1] * y + m.m[1][2] * z + m.m[1][3];
-		float zp = m.m[2][0] * x + m.m[2][1] * y + m.m[2][2] * z + m.m[2][3];
-		float wp = m.m[3][0] * x + m.m[3][1] * y + m.m[3][2] * z + m.m[3][3];
-		if (wp == 1.0f)
-			return Point3<float>(xp, yp, zp);
-		else
-			return Point3<float>(xp, yp, zp) / wp;
-	}
 
-	Vector3<float> Transform::operator()(const Vector3<float>& v) const
-	{
-		float x = v.x;
-		float y = v.y;
-		float z = v.z;
-		return Vector3<float>(m.m[0][0] * x + m.m[0][1] * y + m.m[0][2] * z,
-			m.m[1][0] * x + m.m[1][1] * y + m.m[1][2] * z,
-			m.m[2][0] * x + m.m[2][1] * y + m.m[2][2] * z);
-	}
-
-	Normal Transform::operator()(const Normal & n) const
-	{
-		float x = n.x;
-		float y = n.y;
-		float z = n.z;
-		return Normal(m_Inv.m[0][0] * x + m_Inv.m[1][0] * y + m_Inv.m[2][0] * z,
-			m_Inv.m[0][1] * x + m_Inv.m[1][1] * y + m_Inv.m[2][1] * z,
-			m_Inv.m[0][2] * x + m_Inv.m[1][2] * y + m_Inv.m[2][2] * z);
-	}
 
 	Ray Transform::operator()(const Ray & r) const
 	{
@@ -80,20 +49,6 @@ namespace SnowGaze
 		return ret;
 	}
 
-	BBox Transform::operator()(const BBox & b) const
-	{
-		const Transform &m = *this;
-		BBox result(		 m(Point3f(b.m_Min.x, b.m_Min.y, b.m_Min.z)));
-		result = Union(result, m(Point3f(b.m_Max.x, b.m_Min.y, b.m_Min.z)));
-		result = Union(result, m(Point3f(b.m_Min.x, b.m_Max.y, b.m_Min.z)));
-		result = Union(result, m(Point3f(b.m_Min.x, b.m_Min.y, b.m_Max.z)));
-		result = Union(result, m(Point3f(b.m_Min.x, b.m_Max.y, b.m_Max.z)));
-		result = Union(result, m(Point3f(b.m_Max.x, b.m_Max.y, b.m_Min.z)));
-		result = Union(result, m(Point3f(b.m_Max.x, b.m_Min.y, b.m_Max.z)));
-		result = Union(result, m(Point3f(b.m_Max.x, b.m_Max.y, b.m_Max.z)));
-		return result;
-	}
-
 	Transform Transform::operator*(const Transform & t2) const
 	{
 		Matrix4x4 m1 = Mul(m, t2.m);
@@ -108,9 +63,9 @@ namespace SnowGaze
 
 	bool Transform::HasScaling() const
 	{
-		float la1 = (*this)(Vec3f(1, 0, 0)).GetSquareLength();
-		float lb2 = (*this)(Vec3f(0, 1, 0)).GetSquareLength();
-		float lc3 = (*this)(Vec3f(0, 0, 1)).GetSquareLength();
+		float la1 = (*this)(Vector3f(1, 0, 0)).GetSquareLength();
+		float lb2 = (*this)(Vector3f(0, 1, 0)).GetSquareLength();
+		float lc3 = (*this)(Vector3f(0, 0, 1)).GetSquareLength();
 
 		auto notOne = [](float x) {
 			return (x < 0.999f || x > 1.001f);
@@ -195,7 +150,7 @@ namespace SnowGaze
 	}
 	Transform GetRotate(float angle, const Vector3<float>& axis)
 	{
-		Vec3f a = Geometry::Normalize(axis);
+		Vector3f a = Geometry::Normalize(axis);
 		float sinTheta = sinf(Math::Radians(angle));
 		float cosTheta = cosf(Math::Radians(angle));
 		Matrix4x4 m;
@@ -227,9 +182,9 @@ namespace SnowGaze
 		m.m[2][3] = pos.z;
 		m.m[3][3] = 1.0f;
 
-		Vec3f dir = Geometry::Normalize(look - pos);
-		Vec3f left = Geometry::Normalize(Geometry::Cross(Geometry::Normalize(up), dir));
-		Vec3f newUp = Geometry::Cross(dir, left);
+		Vector3f dir = Geometry::Normalize(look - pos);
+		Vector3f left = Geometry::Normalize(Geometry::Cross(Geometry::Normalize(up), dir));
+		Vector3f newUp = Geometry::Cross(dir, left);
 
 		m.m[0][0] = left.x;
 		m.m[1][0] = left.y;
@@ -279,7 +234,7 @@ namespace SnowGaze
 		}
 
 		// Interpolate translation
-		Vec3f translation = (1.0f - dt) * m_Translation[0] + dt * m_Translation[1];
+		Vector3f translation = (1.0f - dt) * m_Translation[0] + dt * m_Translation[1];
 
 		// Interpolate rotation
 		Quaternion rotation = Slerp(dt, m_Rotation[0], m_Rotation[1]);
@@ -346,7 +301,7 @@ namespace SnowGaze
 		}
 	}
 
-	Vec3f AnimatedTransform::operator()(float time, const Vector3<float>& v) const 
+	Vector3f AnimatedTransform::operator()(float time, const Vector3<float>& v) const 
 	{
 		if (!m_IsAnimated || time <= m_StartTime)
 		{
@@ -364,14 +319,15 @@ namespace SnowGaze
 		}
 	}
 
-	BBox AnimatedTransform::MotionBounds(const BBox & b, bool useInverse) const
+	template<typename T>
+	Bounds3<T> AnimatedTransform::MotionBounds(const Bounds3<T> & b, bool useInverse) const
 	{
 		if (!m_IsAnimated)
 		{
 			return (GetInverse(*m_StartTransform))(b);
 		}
 
-		BBox ret;
+		Bounds3<T> ret;
 		const int nSteps = 128;
 		for (int i = 0; i < nSteps; ++i)
 		{

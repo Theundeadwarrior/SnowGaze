@@ -28,7 +28,7 @@ namespace SnowGaze
 		Transform ToTransform() const;
 
 	public:
-		Vec3f v;
+		Vector3f v;
 		float w;
 	};
 

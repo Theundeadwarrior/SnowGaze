@@ -3,7 +3,7 @@
 namespace SnowGaze {
 	template<typename T> class Vector3;
 	template<typename T> class Point3;
-	class Normal;
+	template<typename T> class Normal3;
 }
 
 namespace SnowGaze
@@ -15,25 +15,25 @@ namespace SnowGaze
 		T Dot(const Vector3<T>& lhs, const Vector3<T>& rhs);
 
 		template<typename T>
-		T Dot(const Vector3<T>& lhs, const Normal& rhs);
+		T Dot(const Vector3<T>& lhs, const Normal3<T>& rhs);
 
 		template<typename T>
-		T Dot(const Normal& lhs, const Vector3<T>& rhs);
+		T Dot(const Normal3<T>& lhs, const Vector3<T>& rhs);
 
 		template<typename T>
-		T Dot(const Normal& lhs, const Normal& rhs);
+		T Dot(const Normal3<T>& lhs, const Normal3<T>& rhs);
 
 		template<typename T>
 		T AbsDot(const Vector3<T>& lhs, const Vector3<T>& rhs);
 
 		template<typename T>
-		T AbsDot(const Vector3<T>& lhs, const Normal& rhs);
+		T AbsDot(const Vector3<T>& lhs, const Normal3<T>& rhs);
 
 		template<typename T>
-		T AbsDot(const Normal& lhs, const Vector3<T>& rhs);
+		T AbsDot(const Normal3<T>& lhs, const Vector3<T>& rhs);
 
 		template<typename T>
-		T AbsDot(const Normal& lhs, const Normal& rhs);
+		T AbsDot(const Normal3<T>& lhs, const Normal3<T>& rhs);
 
 		template<typename T>
 		Vector3<T> Cross(const Vector3<T>& lhs, const Vector3<T>& rhs);
@@ -41,7 +41,8 @@ namespace SnowGaze
 		template<typename T>
 		Vector3<T> Normalize(const Vector3<T>& v);
 
-		Normal Normalize(const Normal& n);
+		template<typename T>
+		inline Normal3<T> Normalize(const Normal3<T>& n);
 
 		// v1 needs to be normalized!!
 		template<typename T>
@@ -55,7 +56,7 @@ namespace SnowGaze
 
 		// Might need to implement for other combinations.
 		template<typename T>
-		Normal FaceForward(const Normal& n, const Vector3<T>& v);
+		Normal3<T> FaceForward(const Normal3<T>& n, const Vector3<T>& v);
 	}
 }
 

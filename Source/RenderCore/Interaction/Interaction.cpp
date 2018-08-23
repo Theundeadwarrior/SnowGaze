@@ -8,7 +8,7 @@ namespace SnowGaze
 	{
 	}
 
-	Interaction::Interaction(const Point3<float>& p, const Normal & n, const Vector3<float>& error, const Vector3<float>& wo, float time)// , const MediumInterface & mediumInterface)
+	Interaction::Interaction(const Point3f& p, const Normal3f & n, const Vector3f& error, const Vector3f& wo, float time)// , const MediumInterface & mediumInterface)
 		: m_Point(p)
 		, m_Normal(n)
 		, m_Error(error)

@@ -7,7 +7,7 @@ using namespace SnowGaze;
 
 void RunTests()
 {
-	Vec3f v1(1.0f, 1.0f, 1.0f);
+	Vector3f v1(1.0f, 1.0f, 1.0f);
 
 	auto v3 = v1 + v1;
 

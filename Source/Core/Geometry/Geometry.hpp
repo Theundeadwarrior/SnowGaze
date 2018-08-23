@@ -16,19 +16,19 @@ namespace SnowGaze
 		}
 
 		template<typename T>
-		inline T Dot(const Vector3<T>& lhs, const Normal & rhs)
+		inline T Dot(const Vector3<T>& lhs, const Normal3<T>& rhs)
 		{
 			return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
 		}
 
 		template<typename T>
-		inline T Dot(const Normal & lhs, const Vector3<T>& rhs)
+		inline T Dot(const Normal3<T>& lhs, const Vector3<T>& rhs)
 		{
 			return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
 		}
 
 		template<typename T>
-		inline T Dot(const Normal & lhs, const Normal & rhs)
+		inline T Dot(const Normal3<T> & lhs, const Normal3<T> & rhs)
 		{
 			return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
 		}
@@ -40,19 +40,19 @@ namespace SnowGaze
 		}
 
 		template<typename T>
-		inline T AbsDot(const Vector3<T>& lhs, const Normal & rhs)
+		inline T AbsDot(const Vector3<T>& lhs, const Normal3<T> & rhs)
 		{
 			return Abs(Dot(lhs, rhs));
 		}
 
 		template<typename T>
-		inline T AbsDot(const Normal & lhs, const Vector3<T>& rhs)
+		inline T AbsDot(const Normal3<T> & lhs, const Vector3<T>& rhs)
 		{
 			return Abs(Dot(lhs, rhs));
 		}
 
 		template<typename T>
-		inline T AbsDot(const Normal & lhs, const Normal & rhs)
+		inline T AbsDot(const Normal3<T> & lhs, const Normal3<T> & rhs)
 		{
 			return Abs(Dot(lhs, rhs));
 		}
@@ -69,6 +69,12 @@ namespace SnowGaze
 		inline Vector3<T> Normalize(const Vector3<T>& v)
 		{
 			return v / v.GetLength();
+		}
+
+		template<typename T>
+		Normal3<T> Normalize(const Normal3<T>& n)
+		{
+			return n / n.GetLength();
 		}
 
 		template<typename T>
@@ -100,7 +106,7 @@ namespace SnowGaze
 		}
 
 		template<typename T>
-		inline Normal FaceForward(const Normal & n, const Vector3<T>& v)
+		inline Normal3<T> FaceForward(const Normal3<T> & n, const Vector3<T>& v)
 		{
 			return (Dor(n,v) < 0.f) ? -n : n;
 		}

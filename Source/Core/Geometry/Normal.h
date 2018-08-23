@@ -1,39 +1,52 @@
 #pragma once
 
+//todo: add Normal2 and change Normal to Normal3. Also change mult and div functions to use template U instead of float.
+
 namespace SnowGaze { template<typename T> class Vector3; }
 
 namespace SnowGaze
 {
-	class Normal
+	template<typename T>
+	class Normal3
 	{
 	public:
-		Normal();
-		template<typename T>
-		explicit Normal(const Vector3<T>& v);
-		Normal(float x, float y, float z);
-		Normal(const Normal&) = default;
-		~Normal() = default;
+		Normal3();
+		explicit Normal3(const Vector3<T>& v);
+		Normal3(float x, float y, float z);
+		Normal3(const Normal3<T>&) = default;
+		~Normal3() = default;
 
 		float GetLength() const;
 		float GetSquareLength() const;
 
 		void Normalize();
 
-		Normal operator+(const Normal& rhs) const;
-		Normal& operator+=(const Normal& rhs);
+		Normal3<T> operator+(const Normal3<T>& rhs) const;
+		Normal3<T>& operator+=(const Normal3<T>& rhs);
 
-		Normal operator-(const Normal& rhs) const;
-		Normal& operator-=(const Normal& rhs);
+		Normal3<T> operator-(const Normal3<T>& rhs) const;
+		Normal3<T>& operator-=(const Normal3<T>& rhs);
 
-		Normal operator*(float mul) const;
-		Normal& operator*=(float mul);
+		template<typename U>
+		Normal3<T> operator*(U mul) const;
+		
+		template<typename U>
+		Normal3<T>& operator*=(U mul);
 
-		Normal operator/(float div) const;
-		Normal& operator/=(float div);
+		template<typename U>
+		Normal3<T> operator/(U div) const;
+
+		template<typename U>
+		Normal3<T>& operator/=(U div);
 
 	public:
 		float x;
 		float y;
 		float z;
 	};
+
+	using Normal3f = Normal3<float>;
+	using Normal3d = Normal3<double>;
 }
+
+#include "Core/Geometry/Normal.hpp"

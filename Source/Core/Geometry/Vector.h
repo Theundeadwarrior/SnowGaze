@@ -2,7 +2,7 @@
 
 #include "Core/Core.h"
 
-namespace SnowGaze { class Normal; }
+namespace SnowGaze { template<typename T> class Normal3; }
 
 namespace SnowGaze
 {
@@ -49,7 +49,8 @@ namespace SnowGaze
 	public:
 		Vector3() = default;
 		Vector3(T x, T y, T z);
-		explicit Vector3(const Normal& n);
+		Vector3(const Vector3<T>& v);
+		explicit Vector3(const Normal3<T>& n);
 		~Vector3() = default;
 
 		float GetLength() const;
@@ -83,11 +84,11 @@ namespace SnowGaze
 		T z;
 	};
 
-	template<typename T>
-	Vector3<T> operator*(float f, const Vector3<T>& v);
+	template<typename T, typename U>
+	Vector3<T> operator*(U f, const Vector3<T>& v);
 
-	template<typename T>
-	Vector2<T> operator*(float f, const Vector2<T>& v);
+	template<typename T, typename U>
+	Vector2<T> operator*(U f, const Vector2<T>& v);
 
 	template<typename T>
 	T Dot(const Vector3<T>& lhs, const Vector3<T>& rhs);
@@ -95,10 +96,10 @@ namespace SnowGaze
 	template<typename T>
 	T Dot(const Vector2<T>& lhs, const Vector2<T>& rhs);
 
-	using Vec2f = Vector2<float>;
-	using Vec2d = Vector2<double>;
-	using Vec3f = Vector3<float>;
-	using Vec3d = Vector3<double>;
+	using Vector2f = Vector2<float>;
+	using Vector2d = Vector2<double>;
+	using Vector3f = Vector3<float>;
+	using Vector3d = Vector3<double>;
 }
 
 #include "Core/Geometry/Vector.hpp"

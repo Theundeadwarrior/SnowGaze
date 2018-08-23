@@ -1,8 +1,10 @@
 #pragma once
 
+#include "Vector.h"
+#include "Core/Geometry/Normal.h"
+
 #include <assert.h>
 #include <math.h>
-#include "Vector.h"
 
 namespace SnowGaze
 {
@@ -102,7 +104,15 @@ namespace SnowGaze
 	{}
 
 	template<typename T>
-	Vector3<T>::Vector3(const Normal& n)
+	inline Vector3<T>::Vector3(const Vector3& v)
+		: x(v.x)
+		, y(v.y)
+		, z(v.z)
+	{
+	}
+
+	template<typename T>
+	Vector3<T>::Vector3(const Normal3<T>& n)
 		: x(n.x)
 		, y(n.y)
 		, z(n.z)
@@ -143,7 +153,7 @@ namespace SnowGaze
 	}
 
 	template<typename T>
-	inline Vector3<T> Vector3<T>::operator-(const Vector3<T>& rhs) const
+	inline Vector3<T> Vector3<T>::operator-(const Vector3& rhs) const
 	{
 		return Vector3(x - static_cast<T>(rhs.x), y - static_cast<T>(rhs.y), z - static_cast<T>(rhs.z));
 	}
@@ -197,14 +207,14 @@ namespace SnowGaze
 		return *this;
 	}
 
-	template<typename T>
-	inline Vector3<T> operator*(float f, const Vector3<T>& v)
+	template<typename T, typename U>
+	inline Vector3<T> operator*(U f, const Vector3<T>& v)
 	{
 		return v * f;
 	}
 
-	template<typename T>
-	Vector2<T> operator*(float f, const Vector2<T>& v)
+	template<typename T, typename U>
+	Vector2<T> operator*(U f, const Vector2<T>& v)
 	{
 		return v * f;
 	}

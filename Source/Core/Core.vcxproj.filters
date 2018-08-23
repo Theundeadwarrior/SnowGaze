@@ -47,6 +47,9 @@
     <ClInclude Include="Geometry\Point.hpp">
       <Filter>Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="Geometry\BoundingBox.hpp">
+      <Filter>Geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Geometry">
@@ -58,16 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
-    <ClCompile Include="Geometry\Geometry.cpp">
-      <Filter>Geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="Geometry\Normal.cpp">
-      <Filter>Geometry</Filter>
-    </ClCompile>
     <ClCompile Include="Geometry\Ray.cpp">
-      <Filter>Geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="Geometry\BoundingBox.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
     <ClCompile Include="Geometry\Matrix.cpp">
@@ -77,6 +71,9 @@
       <Filter>Geometry</Filter>
     </ClCompile>
     <ClCompile Include="Geometry\Quaternion.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Normal.hpp">
       <Filter>Geometry</Filter>
     </ClCompile>
   </ItemGroup>

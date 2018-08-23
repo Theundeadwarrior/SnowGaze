@@ -14,14 +14,14 @@ namespace SnowGaze
 	public:
 		Ray();
 		~Ray() = default;
-		Ray(const Point3f& origin, const Vec3f& direction, float start, float end = std::numeric_limits<float>::infinity(), float time = 0.0f, int depth = 0);
-		Ray(const Point3f& origin, const Vec3f& direction, const Ray& parent, float start, float end = std::numeric_limits<float>::infinity());
+		Ray(const Point3f& origin, const Vector3f& direction, float start, float end = std::numeric_limits<float>::infinity(), float time = 0.0f, int depth = 0);
+		Ray(const Point3f& origin, const Vector3f& direction, const Ray& parent, float start, float end = std::numeric_limits<float>::infinity());
 
 		Point3f operator()(float t);
 
 	public:
 		Point3f o;
-		Vec3f d;
+		Vector3f d;
 
 		mutable float mint;
 		mutable float maxt;
@@ -34,16 +34,16 @@ namespace SnowGaze
 	{
 	public:
 		RayDifferential();
-		RayDifferential(const Point3f& origin, const Vec3f& direction, float start, float end = std::numeric_limits<float>::infinity(), float time = 0.0f, int depth = 0);
-		RayDifferential(const Point3f& origin, const Vec3f& direction, const Ray& parent, float start, float end = std::numeric_limits<float>::infinity());
+		RayDifferential(const Point3f& origin, const Vector3f& direction, float start, float end = std::numeric_limits<float>::infinity(), float time = 0.0f, int depth = 0);
+		RayDifferential(const Point3f& origin, const Vector3f& direction, const Ray& parent, float start, float end = std::numeric_limits<float>::infinity());
 
 		void ScaleDifferentials(float s);
 
 	public:
 		Point3f rxOrigin;
 		Point3f ryOrigin;
-		Vec3f rxDirection;
-		Vec3f ryDirection;
+		Vector3f rxDirection;
+		Vector3f ryDirection;
 		bool m_HasDifferential;
 	};
 }

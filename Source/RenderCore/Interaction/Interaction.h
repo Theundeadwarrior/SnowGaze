@@ -13,16 +13,16 @@ namespace SnowGaze
 	{
 	public:
 		Interaction();
-		Interaction(const Point3<float>& p, const Normal& n, const Vector3<float>& error,
+		Interaction(const Point3<float>& p, const Normal3<float>& n, const Vector3<float>& error,
 			const Vector3<float>& wo, float time);//, const MediumInterface& mediumInteface);
 
 
 	private:
-		Point3<float> m_Point;
+		Point3f m_Point;
 		float m_Time;
-		Vector3<float> m_Error;
-		Vector3<float> m_WorldObject;
-		Normal m_Normal;
+		Vector3f m_Error;
+		Vector3f m_WorldObject;
+		Normal3f m_Normal;
 		//MediumInterface m_Interface;
 	};
 }
