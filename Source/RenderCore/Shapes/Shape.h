@@ -38,6 +38,9 @@ namespace SnowGaze
 
 		virtual float GetSolidAngle(const Point3<float>& p, int nbSample = 512) const;
 
+		bool GetIsReverseOrientation() const { return m_IsReverseOrientation; }
+		bool GetTransformSwapsHandedness() const { return m_TransformSwapsHandedness; }
+
 
 		static uint32_t s_ShapeCount;
 

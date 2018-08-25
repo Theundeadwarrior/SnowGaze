@@ -28,5 +28,8 @@
     <ClCompile Include="ShapeTests.cpp">
       <Filter>RendererCore</Filter>
     </ClCompile>
+    <ClCompile Include="InteractionTests.cpp">
+      <Filter>RendererCore</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

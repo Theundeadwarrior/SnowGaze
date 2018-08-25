@@ -12,6 +12,7 @@ namespace SnowGaze {
 	template<typename T> class Bounds3;
 	class Ray;
 	class RayDifferential;
+	class SurfaceInteraction;
 }
 
 namespace SnowGaze
@@ -43,6 +44,7 @@ namespace SnowGaze
 		Ray operator()(const Ray& r) const;
 		RayDifferential operator()(const RayDifferential & r) const;
 		Transform operator*(const Transform& t2) const;
+		SurfaceInteraction operator()(const SurfaceInteraction& s) const;
 
 		bool IsIdentify() const;
 		bool HasScaling() const;

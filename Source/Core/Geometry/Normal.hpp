@@ -120,6 +120,27 @@ namespace SnowGaze
 		return *this;
 	}
 
-	//template Normal3::Normal(const Vec3f&);
-	//template Normal::Normal(const Vec3d&);
+	template<typename T>
+	inline Normal3<T> Normal3<T>::operator-() const
+	{
+		return *this * -1;
+	}
+
+	template<typename T>
+	bool Normal3<T>::operator==(const Normal3<T>& rhs) const
+	{
+		return (x == rhs.x) && (y == rhs.y) && (z == rhs.z);
+	}
+
+	template<typename T>
+	bool Normal3<T>::operator!=(const Normal3<T>& rhs) const
+	{
+		return (x != rhs.x) || (y != rhs.y) || (z != rhs.z);
+	}
+
+	template<typename T>
+	Normal3<T> GetFaceForward(const Normal3<T>& n, const Normal3<T>& n2)
+	{
+		return (Geometry::Dot(n, n2) < 0.f) ? -n : n;
+	}
 }

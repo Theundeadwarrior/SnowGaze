@@ -168,6 +168,7 @@
     <ClCompile Include="Core\PointTests.cpp" />
     <ClCompile Include="Core\TransformTests.cpp" />
     <ClCompile Include="Core\VectorTests.cpp" />
+    <ClCompile Include="InteractionTests.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ShapeTests.cpp" />
   </ItemGroup>
