@@ -45,9 +45,10 @@ namespace SnowGaze
 	}
 
 	template<typename T>
-	void Normal3<T>::Normalize()
+	Normal3<T>& Normal3<T>::Normalize()
 	{
 		*this /= GetLength();
+		return *this;
 	}
 
 	template<typename T>

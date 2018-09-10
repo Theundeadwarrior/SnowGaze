@@ -28,12 +28,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interaction\Interaction.h" />
+    <ClInclude Include="Primitives\GeometricPrimitive.h" />
+    <ClInclude Include="Primitives\Primitive.h" />
     <ClInclude Include="RenderCore.h" />
     <ClInclude Include="Shapes\Shape.h" />
     <ClInclude Include="Shapes\Sphere.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Interaction\Interaction.cpp" />
+    <ClCompile Include="Primitives\GeometricPrimitive.cpp" />
+    <ClCompile Include="Primitives\Primitive.cpp" />
     <ClCompile Include="Shapes\Shape.cpp" />
     <ClCompile Include="Shapes\Sphere.cpp" />
   </ItemGroup>

@@ -5,8 +5,8 @@ namespace SnowGaze
 {
 	template<typename T>
 	Point2<T>::Point2(T x, T y)
-		: X(x)
-		, Y(y)
+		: x(x)
+		, y(y)
 	{
 	}
 

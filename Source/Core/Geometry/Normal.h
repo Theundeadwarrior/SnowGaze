@@ -19,7 +19,7 @@ namespace SnowGaze
 		float GetLength() const;
 		float GetSquareLength() const;
 
-		void Normalize();
+		Normal3<T>& Normalize();
 
 		Normal3<T> operator+(const Normal3<T>& rhs) const;
 		Normal3<T>& operator+=(const Normal3<T>& rhs);

@@ -167,6 +167,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Core.h" />
+    <ClInclude Include="FloatingPoint.h" />
     <ClInclude Include="Geometry\BoundingBox.h" />
     <ClInclude Include="Geometry\BoundingBox.hpp" />
     <ClInclude Include="Geometry\Geometry.h" />
@@ -186,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="FloatingPoint.cpp" />
     <ClCompile Include="Geometry\Matrix.cpp" />
     <ClInclude Include="Geometry\Normal.hpp">
       <FileType>CppCode</FileType>

@@ -108,7 +108,12 @@ namespace SnowGaze
 		template<typename T>
 		inline Normal3<T> FaceForward(const Normal3<T> & n, const Vector3<T>& v)
 		{
-			return (Dor(n,v) < 0.f) ? -n : n;
+			return (Dot(n,v) < 0.f) ? -n : n;
+		}
+		template<typename T>
+		Normal3<T> FaceForward(const Normal3<T>& n, const Normal3<T>& n2)
+		{
+			return (Dot(n, n2) < 0.f) ? -n : n;
 		}
 	}
 }

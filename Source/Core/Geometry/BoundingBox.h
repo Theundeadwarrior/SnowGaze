@@ -2,7 +2,10 @@
 
 #include "Core/Geometry/Point.h"
 
-namespace SnowGaze { template<typename T> class Vector3; }
+namespace SnowGaze { 
+	template<typename T> class Vector3;
+	class Ray;
+}
 
 namespace SnowGaze
 {
@@ -25,6 +28,8 @@ namespace SnowGaze
 
 		float GetSurfaceArea() const;
 		T GetVolume() const;
+
+		bool IntersectP(const Ray &ray, float *hitt0, float *hitt1) const;
 
 		int GetMaximumExtend() const;
 		Point3<T> GetLerp(float x, float y, float z) const;

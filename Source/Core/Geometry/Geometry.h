@@ -11,8 +11,8 @@ namespace SnowGaze
 	namespace Geometry
 	{
 		// Dot & AbsDot
-		template<typename T>
-		T Dot(const Vector3<T>& lhs, const Vector3<T>& rhs);
+		//template<typename T>
+		//T Dot(const Vector3<T>& lhs, const Vector3<T>& rhs);
 
 		template<typename T>
 		T Dot(const Vector3<T>& lhs, const Normal3<T>& rhs);
@@ -57,6 +57,9 @@ namespace SnowGaze
 		// Might need to implement for other combinations.
 		template<typename T>
 		Normal3<T> FaceForward(const Normal3<T>& n, const Vector3<T>& v);
+
+		template<typename T>
+		Normal3<T> FaceForward(const Normal3<T>& n, const Normal3<T>& n2);
 	}
 }
 

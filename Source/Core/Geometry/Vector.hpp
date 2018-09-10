@@ -28,9 +28,10 @@ namespace SnowGaze
 	}
 
 	template<typename T>
-	inline void Vector2<T>::Normalize()
+	inline Vector2<T>& Vector2<T>::Normalize()
 	{
 		*this /= GetLength();
+		return *this;
 	}
 
 	template<typename T>
@@ -126,9 +127,10 @@ namespace SnowGaze
 	}
 
 	template<typename T>
-	inline void Vector3<T>::Normalize()
+	inline Vector3<T>& Vector3<T>::Normalize()
 	{
 		*this /= GetLength();
+		return *this;
 	}
 
 	template<typename T>
@@ -150,6 +152,12 @@ namespace SnowGaze
 		y += static_cast<T>(rhs.y);
 		z += static_cast<T>(rhs.z);
 		return *this;
+	}
+
+	template<typename T>
+	inline Vector3<T> Vector3<T>::operator-() const
+	{
+		return Vector3(-x, -y, -z);
 	}
 
 	template<typename T>
@@ -229,5 +237,18 @@ namespace SnowGaze
 	T Dot(const Vector2<T>& lhs, const Vector2<T>& rhs)
 	{
 		return lhs.x * rhs.x + lhs.y * rhs.y;
+	}
+
+	template<typename T>
+	inline Vector3<T> Cross(const Vector3<T>& lhs, const Vector3<T>& rhs)
+	{
+		double v1x = lhs.x;
+		double v1y = lhs.y;
+		double v1z = lhs.z;
+		double v2x = rhs.x;
+		double v2y = rhs.y;
+		double v2z = rhs.z;
+
+		return Vector3<T>((float)(v1y * v2z) - (float)(v1z * v2y), (float)(v1z * v2x) - (float)(v1x * v2z), (float)(v1x * v2y) - (float)(v1y * v2x));
 	}
 }

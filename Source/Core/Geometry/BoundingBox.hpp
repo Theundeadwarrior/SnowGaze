@@ -154,4 +154,28 @@ namespace SnowGaze
 		ret.m_Max.z = fmax(b1.m_Max.z, b2.m_Max.z);
 		return ret;
 	}
+
+	template <typename T>
+	inline bool Bounds3<T>::IntersectP(const Ray &ray, float *hitt0, float *hitt1) const
+	{
+		float t0 = 0, t1 = ray.tMax;
+		for (int i = 0; i < 3; ++i) {
+			// Update interval for _i_th bounding box slab
+			float invRayDir = 1 / ray.d[i];
+			float tNear = (pMin[i] - ray.o[i]) * invRayDir;
+			float tFar = (pMax[i] - ray.o[i]) * invRayDir;
+
+			// Update parametric interval from slab intersection $t$ values
+			if (tNear > tFar) std::swap(tNear, tFar);
+
+			// Update _tFar_ to ensure robust ray--bounds intersection
+			tFar *= 1 + 2 * Gamma(3);
+			t0 = tNear > t0 ? tNear : t0;
+			t1 = tFar < t1 ? tFar : t1;
+			if (t0 > t1) return false;
+		}
+		if (hitt0) *hitt0 = t0;
+		if (hitt1) *hitt1 = t1;
+		return true;
+	}
 }

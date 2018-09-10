@@ -1,3 +1,4 @@
+#include "..\..\Core\Geometry\Transform.h"
 #include "RenderCore/Interaction/Interaction.h"
 
 #include "Core/Geometry/Geometry.h"
@@ -68,26 +69,26 @@ namespace SnowGaze
 
 	SurfaceInteraction Transform::operator()(const SurfaceInteraction & si) const
 	{
-		//SurfaceInteraction ret;
-		////ret.m_Point = (*this)(si.m_Point, si.m_Error, &ret.m_Error);
+		SurfaceInteraction ret;
+		ret.m_Point = (*this)(si.m_Point, si.m_Error, &ret.m_Error);
 
-		//// Transform remaining members of _SurfaceInteraction_
-		//const Transform &t = *this;
-		//ret.n = Normalize(t(si.n));
-		//ret.wo = Normalize(t(si.wo));
-		//ret.time = si.time;
-		//ret.mediumInterface = si.mediumInterface;
-		//ret.uv = si.uv;
-		//ret.shape = si.shape;
-		//ret.dpdu = t(si.dpdu);
-		//ret.dpdv = t(si.dpdv);
-		//ret.dndu = t(si.dndu);
-		//ret.dndv = t(si.dndv);
-		//ret.shading.n = Normalize(t(si.shading.n));
-		//ret.shading.dpdu = t(si.shading.dpdu);
-		//ret.shading.dpdv = t(si.shading.dpdv);
-		//ret.shading.dndu = t(si.shading.dndu);
-		//ret.shading.dndv = t(si.shading.dndv);
+		// Transform remaining members of _SurfaceInteraction_
+		const Transform &t = *this;
+		ret.m_Normal = (t(si.m_Normal)).Normalize();
+		ret.m_OutDir = (t(si.m_OutDir)).Normalize();
+		ret.m_Time = si.m_Time;
+		//ret.m_Medium = si.m_Medium;
+		ret.m_Uv = si.m_Uv;
+		ret.m_Shape = si.m_Shape;
+		ret.m_Dpdu = t(si.m_Dpdu);
+		ret.m_Dpdv = t(si.m_Dpdv);
+		ret.m_Dndu = t(si.m_Dndu);
+		ret.m_Dndv = t(si.m_Dndv);
+		ret.m_Shading.n = (t(si.m_Shading.n)).Normalize();
+		ret.m_Shading.dpdu = t(si.m_Shading.dpdu);
+		ret.m_Shading.dpdv = t(si.m_Shading.dpdv);
+		ret.m_Shading.dndu = t(si.m_Shading.dndu);
+		ret.m_Shading.dndv = t(si.m_Shading.dndv);
 		//ret.dudx = si.dudx;
 		//ret.dvdx = si.dvdx;
 		//ret.dudy = si.dudy;
@@ -98,10 +99,8 @@ namespace SnowGaze
 		//ret.bssrdf = si.bssrdf;
 		//ret.primitive = si.primitive;
 		////    ret.n = Faceforward(ret.n, ret.shading.n);
-		//ret.shading.n = Faceforward(ret.shading.n, ret.n);
+		ret.m_Shading.n = Geometry::FaceForward(ret.m_Shading.n, ret.m_Normal);
 		//ret.faceIndex = si.faceIndex;
-		//return ret;
-
-		return SurfaceInteraction();
+		return ret;
 	}
 }

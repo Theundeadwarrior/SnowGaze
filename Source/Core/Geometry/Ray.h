@@ -9,33 +9,30 @@
 
 namespace SnowGaze
 {
+	class Medium;
+
 	class Ray
 	{
 	public:
 		Ray();
-		~Ray() = default;
-		Ray(const Point3f& origin, const Vector3f& direction, float start, float end = std::numeric_limits<float>::infinity(), float time = 0.0f, int depth = 0);
-		Ray(const Point3f& origin, const Vector3f& direction, const Ray& parent, float start, float end = std::numeric_limits<float>::infinity());
+		Ray(const Point3f& o, const Vector3f& d, float tMax = std::numeric_limits<float>::infinity(), float time = 0.f, const Medium *medium = nullptr);
 
-		Point3f operator()(float t);
+		Point3f operator()(float t) const;
 
 	public:
 		Point3f o;
 		Vector3f d;
 
-		mutable float mint;
 		mutable float maxt;
-
 		float time;
-		int depth; // How many bounces
+		const Medium* medium;
 	};
 
 	class RayDifferential : public Ray
 	{
 	public:
 		RayDifferential();
-		RayDifferential(const Point3f& origin, const Vector3f& direction, float start, float end = std::numeric_limits<float>::infinity(), float time = 0.0f, int depth = 0);
-		RayDifferential(const Point3f& origin, const Vector3f& direction, const Ray& parent, float start, float end = std::numeric_limits<float>::infinity());
+		RayDifferential(const Point3f & origin, const Vector3f & direction, float tMax, float time, const Medium* medium);
 
 		void ScaleDifferentials(float s);
 

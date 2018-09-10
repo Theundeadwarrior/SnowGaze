@@ -7,7 +7,7 @@ namespace SnowGaze
 {
 	uint32_t Shape::s_ShapeCount = 1;
 
-	inline Shape::Shape(const Transform * objectToWorld, const Transform * worldToObject, bool reverseOrientation)
+	Shape::Shape(const Transform * objectToWorld, const Transform * worldToObject, bool reverseOrientation)
 		: m_ObjectToWorld(objectToWorld)
 		, m_WorldToObject(worldToObject)
 		, m_IsReverseOrientation(reverseOrientation)

@@ -50,6 +50,7 @@
     <ClInclude Include="Geometry\BoundingBox.hpp">
       <Filter>Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="FloatingPoint.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Geometry">
@@ -76,5 +77,6 @@
     <ClCompile Include="Geometry\Normal.hpp">
       <Filter>Geometry</Filter>
     </ClCompile>
+    <ClCompile Include="FloatingPoint.cpp" />
   </ItemGroup>
 </Project>

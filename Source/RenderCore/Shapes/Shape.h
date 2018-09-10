@@ -18,6 +18,7 @@ namespace SnowGaze
 	{
 	public:
 		Shape(const Transform* objectToWorld, const Transform* worldToObject, bool reverseOrientation);
+		virtual ~Shape() {};
 
 		virtual Bounds3<float> GetObjectBound() const = 0;
 		virtual Bounds3<float> GetWorldBound() const;
@@ -31,12 +32,12 @@ namespace SnowGaze
 		virtual float GetArea() const = 0;
 		
 		virtual Interaction Sample(const Point2<float>& u, float* pdf) const = 0;
-		virtual float PDF(const Interaction&) const { return 1 / GetArea(); }
+		//virtual float PDF(const Interaction&) const { return 1 / GetArea(); }
 
-		virtual Interaction Sample(const Interaction& ref, const Point2<float>& u, float* pdf) const;
-		virtual float PDF(const Interaction& ref, const Vector3<float>& wi) const;
+		//virtual Interaction Sample(const Interaction& ref, const Point2<float>& u, float* pdf) const;
+		//virtual float PDF(const Interaction& ref, const Vector3<float>& wi) const;
 
-		virtual float GetSolidAngle(const Point3<float>& p, int nbSample = 512) const;
+		//virtual float GetSolidAngle(const Point3<float>& p, int nbSample = 512) const;
 
 		bool GetIsReverseOrientation() const { return m_IsReverseOrientation; }
 		bool GetTransformSwapsHandedness() const { return m_TransformSwapsHandedness; }
@@ -44,7 +45,7 @@ namespace SnowGaze
 
 		static uint32_t s_ShapeCount;
 
-	private:
+	protected:
 		const Transform* m_ObjectToWorld;
 		const Transform* m_WorldToObject;
 		const bool m_IsReverseOrientation;

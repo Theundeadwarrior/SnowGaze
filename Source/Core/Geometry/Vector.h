@@ -17,7 +17,7 @@ namespace SnowGaze
 		float GetLength() const;
 		float GetSquareLength() const;
 
-		void Normalize();
+		Vector2<T>& Normalize();
 		
 		Vector2<T> operator+(const Vector2<T>& rhs) const;
 		Vector2<T>& operator+=(const Vector2<T>& rhs);
@@ -56,11 +56,13 @@ namespace SnowGaze
 		float GetLength() const;
 		float GetSquareLength() const;
 
-		void Normalize();
+		Vector3<T>& Normalize();
 
 		Vector3<T> operator+(const Vector3<T>& rhs) const;
 	
 		Vector3<T>& operator+=(const Vector3<T>& rhs);
+		
+		Vector3<T> operator-() const;
 
 		Vector3<T> operator-(const Vector3<T>& rhs) const;
 
@@ -95,6 +97,9 @@ namespace SnowGaze
 
 	template<typename T>
 	T Dot(const Vector2<T>& lhs, const Vector2<T>& rhs);
+
+	template<typename T>
+	Vector3<T> Cross(const Vector3<T>& lhs, const Vector3<T>& rhs);
 
 	using Vector2f = Vector2<float>;
 	using Vector2d = Vector2<double>;

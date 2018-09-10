@@ -4,32 +4,21 @@
 
 namespace SnowGaze
 {
-	Ray::Ray()
-		: mint(0.0f)
-		, maxt(std::numeric_limits<float>::infinity())
+	Ray::Ray() 
+		: maxt(std::numeric_limits<float>::infinity())
 		, time(0.0f)
-		, depth(0)
+		, medium(nullptr) 
 	{}
 
-	Ray::Ray(const Point3f & origin, const Vector3f & direction, float start, float end, float t, int d)
-		: o(origin)
-		, d(direction)
-		, mint(start)
-		, maxt(end)
-		, time(t)
-		, depth(d)
+	Ray::Ray(const Point3f & o, const Vector3f & d, float tMax, float time, const Medium * medium)
+		: o(o)
+		, d(d)
+		, maxt(tMax)
+		, time(time)
+		, medium(medium) 
 	{}
 
-	Ray::Ray(const Point3f & origin, const Vector3f & direction, const Ray & parent, float start, float end)
-		: o(origin)
-		, d(direction)
-		, mint(start)
-		, maxt(end)
-		, time(parent.time)
-		, depth(parent.depth + 1)
-	{}
-
-	Point3f Ray::operator()(float t)
+	Point3f Ray::operator()(float t) const
 	{
 		return o + d * t;
 	}
@@ -38,13 +27,8 @@ namespace SnowGaze
 		: m_HasDifferential(false)
 	{}
 
-	RayDifferential::RayDifferential(const Point3f & origin, const Vector3f & direction, float start, float end, float time, int depth)
-		: Ray(origin, direction, start, end, time, depth)
-		, m_HasDifferential(false)
-	{}
-
-	RayDifferential::RayDifferential(const Point3f & origin, const Vector3f & direction, const Ray & parent, float start, float end)
-		: Ray(origin, direction, parent, start, end)
+	RayDifferential::RayDifferential(const Point3f & origin, const Vector3f & direction, float tMax, float time, const Medium* medium)
+		: Ray(origin, direction, tMax, time, medium)
 		, m_HasDifferential(false)
 	{}
 
